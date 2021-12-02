@@ -24,7 +24,12 @@
                     <p id="progress-bar" class="progressRed" v-if="(form.password.length >= 1) && (form.password.length < 8)"></p>
                     <p id="progress-bar" class="progressBlue" v-if="(form.password.length >= 8) && (form.password.length < 12)"></p>
                     <p id="progress-bar" class="progressGreen" v-if="form.password.length >= 12"></p>
-                    <span v-if="!passwordIsValid" class="error">Le mot de passe doit contenir au minimum 8 caractères, une majuscule, un chiffre et un caractère spécial</span>
+                    <span v-if="!passwordIsValid" class="error">Le mot de passe doit contenir au minimum 
+                      <span v-if="form.password.length < 8">8 caractères</span>
+                      <span v-if="!((/.*[A-Z]/).test(this.form.password))"> une majuscule</span> 
+                      <span v-if="!((/.*\d/).test(this.form.password))"> un chiffre</span> 
+                      <span v-if="!((/.*[+\*-\/?!.$]/).test(this.form.password))"> un caractère spécial</span>
+                    </span>
                 </div>
                 <div class="confirm-container">
                     <label for="confirm">Confirmer mot de passe</label>
@@ -129,11 +134,8 @@ input[type="email"] {
 }
 span {
   margin-bottom: 20px;
-  display: block;
+  //display: block;
   font-size: 0.8rem;
-//   visibility: hidden;
-//   opacity: 0;
-  transition: 0.3s;
   color: red;
 }
 p {
@@ -145,10 +147,10 @@ p {
   visibility: hidden;
   transition: 0.3s;
 }
-#security span {
-  display: inline;
-}
-//input[type="submit"] {
+// #security span {
+//   display: inline;
+// }
+
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
@@ -165,12 +167,6 @@ button {
       filter: brightness(105%);
       transform: translateX(2px);
   }
-
-//   &:disabled {
-//       background: #b9b9b9;
-//       filter: none;
-//       transform: none;
-//   }
 }
 .error input {
   color: red;
