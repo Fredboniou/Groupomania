@@ -73,7 +73,7 @@ export default {
           return !!(/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(this.form.password))
         },
         formIsValid() {
-            return this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && (this.form.confirm != this.passwordIsValid);
+            return this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && !(this.form.confirm != this.passwordIsValid);
         },
     },
     methods: {
@@ -91,7 +91,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 
 .form-container {
     display: flex;
 }
@@ -168,10 +167,10 @@ button {
       transform: translateX(2px);
   }
 }
-.error input {
-  color: red;
-  border: 1px solid rgba(255, 0, 0, 0.527);
-}
+// .error input {
+//   color: red;
+//   border: 1px solid rgba(255, 0, 0, 0.527);
+// }
 .error span {
   visibility: visible;
   opacity: 1;

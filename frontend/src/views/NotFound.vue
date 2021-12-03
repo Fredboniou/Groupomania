@@ -3,7 +3,7 @@
         <NotFoundComponents errorMsg="Error" />
         <img src="@/assets/NotFound.jpg" />
         <div class="return">
-            Revenir à l'<router-link to="/">Accueil</router-link>
+            Revenir à l'<router-link to="/">accueil</router-link>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 a {
     text-decoration: none;
+    color: #fff;
 
     &:hover {
         color: #fc2e06;
