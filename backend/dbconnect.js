@@ -5,7 +5,7 @@ require("dotenv").config();
 console.log("Connexion à la base de données...");
 
 const db = mysql.createConnection({
-    database: "foodly",
+    database: "groupomania",
     host: "localhost",
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD
