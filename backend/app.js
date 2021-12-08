@@ -3,6 +3,10 @@ const express = require("express");
 const app = express();
 
 app.use(express.json()); //remplace body-parser devenu obsolète
+app.use(express.urlencoded({ extended: false }));
+
+const cors = require("cors");
+app.use(cors());
 
 const userRoutes = require("./routes/userRoutes");
 
@@ -13,7 +17,7 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.use("api/user", userRoutes);
+  app.use("/api/user", userRoutes);
 
 
 module.exports = app;

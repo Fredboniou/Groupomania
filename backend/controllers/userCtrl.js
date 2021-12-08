@@ -2,17 +2,17 @@ const db = require("../dbconnect"); //connexion bdd
 const bcrypt = require("bcrypt"); //sécurisation mdp
 const jwt = require("jsonwebtoken"); //création token authentification
 
+
 exports.signup = (req, res) => {
-    const nom = req.body.name;
-    const prenom = req.body.firstname;
+    const name = req.body.name;
+    const firstname = req.body.firstname;
     const email = req.body.email;
     const password = req.body.password;
-
-    bcrypt.hash(password, 10) //le mdp est hashé 10 fois, suffisant pour la version développement
-        .then(hash => {
+    bcrypt.hash(password, 10) //le mdp est hashé 10 fois, suffisant pour la version développement    
+    .then(hash => {
             const sql = "INSERT INTO user VALUES (Null, ?, ?, ?, ?, 0)"; //on peut passer NULL pour l'id, MySQL va l'incrémenter automatiquement
                                                                          //le ? est la manière la plus sûre de se protéger contre les attaques par injection
-            const values = [nom, prenom, email, hash];
+            const values = [name, firstname, email, hash];
 
             db.query(sql, values, function(err, result) {
                 if (err) {
@@ -23,6 +23,7 @@ exports.signup = (req, res) => {
             });
         })
         .catch((err) => {
+            console.log(err);
             res.status(500).json({ err }) //500: erreur serveur
         })
 };
