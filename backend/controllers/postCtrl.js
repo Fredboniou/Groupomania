@@ -23,7 +23,7 @@ exports.deletePost = (req, res) => {
         if (err) {
             return res.status(400).json({ message: "Impossible de supprimer le post !" })
         }
-        res.status(201).json({ message: "Post supprimé !" })
+        res.status(200).json({ message: "Post supprimé !" })
     });
 };
 
@@ -50,6 +50,6 @@ exports.getAllPosts = (req, res) => {
             console.log(err);
             return res.status(400).json({ message: "impossible d'afficher le fil d'actualité !" })
         }
-        res.status(201).json({ result })
+        res.status(200).json({ result })
     });
 };

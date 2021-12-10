@@ -41,7 +41,7 @@ exports.login = (req, res) => {
         bcrypt.compare(password, result[0].password) //on cherche la correspondance mdp et mdp crypté enregistré dans la bdd
             .then(valid => {
                 if(!valid) {
-                    return res.status(401).json({ message: "Mot de passe incorrect !" });
+                    return res.status(401).json({ message: "Mot de passe incorrect !" }); //erreur 401 car authentification necessaire
                 }
                 res.status(200).json({ //si il y a une correspondance, on génère un token d'authentification
                     userId: result[0].id,
@@ -64,6 +64,6 @@ exports.delete = (req, res) => {
         if (err) {
             return res.status(500).json({ err })
         }
-        res.status(201).json({ message: "Utilisateur supprimé !" })
+        res.status(200).json({ message: "Utilisateur supprimé !" })
     })
 }
