@@ -43,5 +43,13 @@ exports.updatePost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-    const sql = ""
-}
+    const sql = "SELECT nom, prenom, content, date, DATE_FORMAT(date, '%d-%m-%Y %H:%i') AS date, likes FROM user INNER JOIN post ON user.id = post.userId";
+
+    db.query(sql, function(err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(400).json({ message: "impossible d'afficher le fil d'actualité !" })
+        }
+        res.status(201).json({ result })
+    });
+};
