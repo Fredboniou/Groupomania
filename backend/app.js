@@ -9,6 +9,7 @@ const cors = require("cors");
 app.use(cors());
 
 const userRoutes = require("./routes/userRoutes");
+const postRoutes = require("./routes/postRoutes");
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -17,7 +18,8 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.use("/api/user", userRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/post", postRoutes);
 
 
 module.exports = app;

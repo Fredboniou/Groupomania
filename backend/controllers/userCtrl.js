@@ -55,3 +55,15 @@ exports.login = (req, res) => {
             });
     });
 };
+
+exports.delete = (req, res) => {
+    const userId = req.params.id;
+    const sql = "DELETE FROM user WHERE id=?";
+
+    db.query(sql, [userId], function(err, result) {
+        if (err) {
+            return res.status(500).json({ err })
+        }
+        res.status(201).json({ message: "Utilisateur supprimé !" })
+    })
+}
