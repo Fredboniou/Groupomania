@@ -1,7 +1,7 @@
 const db = require("../dbconnect");
 
 exports.createPost = (req, res) => {
-    const userId = req.body.userId;
+    const userId = req.params.userId;
     const content = req.body.content;
 
     const sql = "INSERT INTO post VALUES (NULL, ?, ?, NOW(), 0)";
@@ -48,7 +48,7 @@ exports.getAllPosts = (req, res) => {
     db.query(sql, function(err, result) {
         if (err) {
             console.log(err);
-            return res.status(400).json({ message: "impossible d'afficher le fil d'actualité !" })
+            return res.status(400).json({ message: "Impossible d'afficher le fil d'actualité !" })
         }
         res.status(200).json({ result })
     });
