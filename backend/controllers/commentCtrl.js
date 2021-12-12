@@ -1,14 +1,16 @@
 const db = require("../dbconnect");
 
 exports.createCom = (req, res) => {
-    const userId = req.params.userId;
+    const userId = req.body.userId;
+    const postId = req.body.postId;
     const content = req.body.content;
     
     const sql = "INSERT INTO comment VALUES (NULL, ?, ?, ?, NOW())";
-    const values = [userId, content];
+    const values = [userId, postId, content];
 
     db.query(sql, values, function (err, result) {
         if (err) {
+            console.log(err);
             return res.status(400).json({ message: "Création du commentaire impossible !" })
         }
         res.status(201).json({ message: "Commentaire créé !" })
@@ -44,7 +46,7 @@ exports.updateCom = (req, res) => {
 };
 
 exports.getAllCom = (req, res) => {
-    const sql = "SELECT nom, prenom, content, date, DATE_FORMAT(date, '%d-%m-%Y %H:%i') AS date FROM user INNER JOIN comment ON user.id = comment.userId";
+    const sql = "SELECT nom, prenom, content, DATE_FORMAT(date, '%d-%m-%Y %H:%i') AS date FROM user INNER JOIN comment ON user.id = comment.userId";
 
     db.query(sql, function (err, result) {
         if (err) {
