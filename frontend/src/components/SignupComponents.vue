@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "SignupComponents",
     data() {
@@ -79,11 +81,25 @@ export default {
     methods: {
         submitForm() {
             
+            // const formIsValid = this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && (this.form.confirm == this.form.password);
+            // if (formIsValid){
+            //     console.log("form submited", this.form);
+            // } else {
+            //     console.log("invalid form");
+            // }
+
             const formIsValid = this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && (this.form.confirm == this.form.password);
-            if (formIsValid){
-                console.log("form submited", this.form);
+            
+            if (formIsValid) {
+              axios.post("http://localhost:3000/api/user/signup", this.form)
+                .then(function(response) {
+                  console.log(response);
+                })
+                .catch(function(error) {
+                  console.log(error);
+                })
             } else {
-                console.log("invalid form");
+              console.log("Invalid form");
             }
         },
     }

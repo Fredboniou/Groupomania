@@ -1,7 +1,7 @@
 const db = require("../dbconnect");
 
 exports.createPost = (req, res) => {
-    const userId = req.params.userId;
+    const userId = req.body.userId;
     const content = req.body.content;
 
     const sql = "INSERT INTO post VALUES (NULL, ?, ?, NOW(), 0)";

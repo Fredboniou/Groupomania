@@ -5,13 +5,13 @@
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="email-container">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" autocomplete="off" required>
-                    <span class="error">Veuillez renseigner votre e-mail</span>
+                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="off" required>
+                    <span v-if="!emailIsValid" class="error">Merci de renseigner l'e-mail</span>
                 </div>
                 <div class="password-container">
                     <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" autocomplete="off">
-                    <span class="error">Veuillez renseigner votre mot de passe</span>
+                    <input type="password" v-model="form.password" name="password" id="password" autocomplete="off">
+                    <span v-if="!passwordIsValid" class="error">Merci de renseigner le mot de passe</span>
                 </div>
                 <button >S'identifier</button>
             </form>
@@ -20,10 +20,54 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "LoginComponents",
     props: {
         loginMsg: String
+    },
+    data() {
+      return {
+        form: {
+          email: null,
+          password: "",
+        }
+      }
+    },
+    computed: {
+      emailIsValid() {
+        return !!(/^([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4})$/.test(this.form.email));
+      },
+      passwordIsValid() {
+        return !!(/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(this.form.password));
+      },
+      formIsValid() {
+            return this.emailIsValid && this.passwordIsValid;
+        },
+    },
+    methods: {
+      submitForm() {
+        const formIsValid = this.emailIsValid && this.passwordIsValid;
+
+        // if (formIsValid){
+        //         console.log("Utilisateur identifié", this.form);
+        //     } else {
+        //         console.log("invalid form");
+        //     }
+
+        if (formIsValid) {
+          axios.post("http://localhost:3000/api/user/login", this.form)
+            .then(function(response) {
+              console.log(response);
+            })
+            .catch(function(error) {
+              console.log(error);
+            })
+        } else {
+          console.log("invalid form");
+        }
+      }
     }
 }
 </script>
