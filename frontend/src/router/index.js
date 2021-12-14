@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from "@/views/Login.vue"
 import Signup from "@/views/Signup.vue"
 import NotFound from "@/views/NotFound.vue"
+import Post from "@/views/Post.vue"
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,11 @@ const routes = [
     path: "/signup",
     name: "Signup",
     component: Signup
+  },
+  {
+    path: "/posts",
+    name: "Post",
+    component: Post
   },
   {
     path: "/*",

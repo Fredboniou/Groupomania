@@ -91,8 +91,10 @@ export default {
             const formIsValid = this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && (this.form.confirm == this.form.password);
             
             if (formIsValid) {
+              const self = this;
               axios.post("http://localhost:3000/api/user/signup", this.form)
                 .then(function(response) {
+                  self.$router.push('/posts');
                   console.log(response);
                 })
                 .catch(function(error) {

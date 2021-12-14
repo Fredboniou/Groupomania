@@ -57,9 +57,13 @@ export default {
         //     }
 
         if (formIsValid) {
+          const self = this;
           axios.post("http://localhost:3000/api/user/login", this.form)
             .then(function(response) {
-              console.log(response);
+              const data = ({userId: response.data.userId, token: response.data.token});
+              const parsed = JSON.stringify(data);
+              localStorage.setItem("form", parsed)
+              self.$router.push("/posts")
             })
             .catch(function(error) {
               console.log(error);
