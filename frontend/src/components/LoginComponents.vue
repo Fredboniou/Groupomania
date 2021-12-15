@@ -62,7 +62,7 @@ export default {
             .then(function(response) {
               const data = ({userId: response.data.userId, token: response.data.token});
               const parsed = JSON.stringify(data);
-              localStorage.setItem("form", parsed)
+              localStorage.setItem("form", parsed);
               self.$router.push("/posts")
             })
             .catch(function(error) {
