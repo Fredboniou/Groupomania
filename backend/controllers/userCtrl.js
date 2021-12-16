@@ -45,8 +45,13 @@ exports.login = (req, res) => {
                 }
                 res.status(200).json({ //si il y a une correspondance, on génère un token d'authentification
                     userId: result[0].id,
-                    token: jwt.sign(
-                        {userId: result[0].id},
+                    userName: result[0].nom,
+                    userFirstname: result[0].prenom,
+                    token: jwt.sign({
+                        userId: result[0].id,
+                        userName: result[0].nom,
+                        userFirstname: result[0].prenom
+                    },
                         process.env.DB_TOKEN,
                         {expiresIn: "24h"}
                     )

@@ -36,7 +36,7 @@
                     <input type="password" v-model="form.confirm" name="confirm" id="confirm" autocomplete="off">
                     <span v-if="form.confirm != form.password">Les mots de passe ne correspondent pas</span>
                 </div>
-                <button >S'inscrire</button>
+                <button>S'inscrire</button>
             </form>
         </div>
     </div>
@@ -48,7 +48,7 @@ import axios from "axios";
 export default {
     name: "SignupComponents",
     data() {
-        return{
+        return {
             form: {
                 name: null,
                 firstname: null,
@@ -80,13 +80,6 @@ export default {
     },
     methods: {
         submitForm() {
-            
-            // const formIsValid = this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && (this.form.confirm == this.form.password);
-            // if (formIsValid){
-            //     console.log("form submited", this.form);
-            // } else {
-            //     console.log("invalid form");
-            // }
 
             const formIsValid = this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && (this.form.confirm == this.form.password);
             

@@ -9,6 +9,7 @@ exports.createPost = (req, res) => {
 
     db.query(sql, values, function(err, result) {
         if (err) {
+            console.log(err);
             return res.status(400).json({ message: "Erreur lors de la création du post !" })
         }
         res.status(201).json({ message: "Post créé !" })

@@ -60,7 +60,13 @@ export default {
           const self = this;
           axios.post("http://localhost:3000/api/user/login", this.form)
             .then(function(response) {
-              const data = ({userId: response.data.userId, token: response.data.token});
+              console.log(response);
+              const data = ({
+                userId: response.data.userId,
+                name: response.data.userName,
+                firstname: response.data.userFirstname,
+                token: response.data.token
+              });
               const parsed = JSON.stringify(data);
               localStorage.setItem("form", parsed);
               self.$router.push("/posts")
