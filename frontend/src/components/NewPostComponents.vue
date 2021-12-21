@@ -5,7 +5,7 @@
             <form @submit.prevent="createPost" autocomplete="off">
                 <div class="post-container">
                     <label for="content">Votre publication</label>
-                    <textarea v-model="form.content" name="textarea" id="content" max-length="300" autocomplete="off" required></textarea>
+                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required></textarea>
                 </div>
                 <button :disabled="!contentIsValid">Publier</button>
             </form>
@@ -57,12 +57,12 @@ export default {
                 const token = data.token;
                 const userId = this.form.userId;
                 const content = this.form.content;
-                const infos = {userId, content}
+                const infos = {userId, content};
                 const self = this;
 
                 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-                axios.post("http://localhost:3000/api/post/",infos , {
+                axios.post("http://localhost:3000/api/post/",infos, {
                     headers: {
                         Authorization: "bearer " + token
                     },

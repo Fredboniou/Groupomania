@@ -6,6 +6,8 @@ import Signup from "@/views/Signup.vue"
 import NotFound from "@/views/NotFound.vue"
 import Post from "@/views/Post.vue"
 import NewPost from "@/views/NewPost.vue"
+import CreateProfile from "@/views/CreateProfile.vue"
+import Profile from "@/views/Profile.vue"
 
 Vue.use(VueRouter)
 
@@ -42,6 +44,16 @@ const routes = [
     path: "/newpost",
     name: "NewPost",
     component: NewPost
+  },
+  {
+    path: "/createprofile",
+    name: "CreateProfile",
+    component: CreateProfile
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile
   },
   {
     path: "/*",

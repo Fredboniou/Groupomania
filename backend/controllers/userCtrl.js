@@ -70,5 +70,27 @@ exports.delete = (req, res) => {
             return res.status(500).json({ err })
         }
         res.status(200).json({ message: "Utilisateur supprimé !" })
-    })
-}
+    });
+};
+
+exports.update = (req, res) => {
+    const userId = req.body.userId;
+    const age = req.body.birthday;
+    const bio = req.body.bio;
+    const city = req.body.city;
+    const school = req.body.school;
+
+    const sql = "UPDATE user SET date_naissance=?, bio=?, ville=?, ecole=? WHERE id=?";
+    //const sql = "UPDATE user SET ? WHERE id=?";
+    const values = [age, bio, city, school, userId];
+    console.log(userId);
+
+    db.query(sql, values, function(err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(401).json({ message: "Impossible de modifier le profil !" })
+        }
+        console.log(values);
+        res.status(200).json({ message: "Profil modifié !" })
+    });
+};
