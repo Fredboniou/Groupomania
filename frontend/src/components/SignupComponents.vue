@@ -36,7 +36,7 @@
                     <input type="password" v-model="form.confirm" name="confirm" id="confirm" autocomplete="off">
                     <span v-if="form.confirm != form.password">Les mots de passe ne correspondent pas</span>
                 </div>
-                <button>S'inscrire</button>
+                <button>Créer mon compte</button>
             </form>
         </div>
     </div>
@@ -87,11 +87,12 @@ export default {
               const self = this;
               axios.post("http://localhost:3000/api/user/signup", this.form)
                 .then(function(response) {
-                  self.$router.push('/posts');
-                  console.log(response);
+                alert("Vous venez de créer votre compte. Désormais, vous pouvez accéder au site en vous connectant.")
+                self.$router.push('/login');
+                console.log(response);
                 })
                 .catch(function(error) {
-                  console.log(error);
+                 console.log(error);
                 })
             } else {
               console.log("Invalid form");

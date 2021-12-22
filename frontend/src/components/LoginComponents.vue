@@ -13,7 +13,7 @@
                     <input type="password" v-model="form.password" name="password" id="password" autocomplete="off">
                     <span v-if="!passwordIsValid" class="error">Merci de renseigner le mot de passe</span>
                 </div>
-                <button>S'identifier</button>
+                <button>Accès membre</button>
             </form>
         </div>
     </div>

@@ -10,7 +10,7 @@ exports.signup = (req, res) => {
     const password = req.body.password;
     bcrypt.hash(password, 10) //le mdp est hashé 10 fois, suffisant pour la version développement    
     .then(hash => {
-            const sql = "INSERT INTO user VALUES (Null, ?, ?, ?, ?, 0)"; //on peut passer NULL pour l'id, MySQL va l'incrémenter automatiquement
+            const sql = "INSERT INTO user VALUES (Null, ?, ?, ?, ?, 0, null, null, null, null)"; //on peut passer NULL pour l'id, MySQL va l'incrémenter automatiquement
                                                                          //le ? est la manière la plus sûre de se protéger contre les attaques par injection
             const values = [name, firstname, email, hash];
 

@@ -10,7 +10,6 @@
         </div>
         <div class="post" v-else>
             <h3>Fil d'actualité</h3>
-            <div class="separate"></div>
             <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
                 <div class="seePost">
                     <div class="userName">
@@ -21,14 +20,14 @@
                     </div>
                     <div class="dateLikes">
                         <div class="postDate">
-                            <p>{{ post.date }}</p>
+                            <p>posté {{ post.date }}</p>
                         </div>
                         <div class="postLikes">
                             <p><i class="fas fa-thumbs-up"></i> {{ post.likes }}</p>
                         </div>
                     </div>
-                    <div class="separate"></div>
                 </div>
+                    <div class="separate"></div>
             </div>
         </div>
     </div>
@@ -55,14 +54,17 @@ export default {
                 this.$router.push("/")
             }
         } else {
+            alert("Veuillez vous identifier pour accéder à cette partie")
             this.$router.push("/")
         }
     },
     methods: {
         fullname() {
+            if (localStorage.getItem("form")) {
             const name = ((JSON.parse(localStorage.getItem("form"))).name);
             const firstname = ((JSON.parse(localStorage.getItem("form"))).firstname);
             return `${firstname} ${name}`
+            }
         },
         async getAllPosts() {
             const data = JSON.parse(localStorage.getItem("form"));
@@ -97,12 +99,13 @@ export default {
 
 <style lang="scss" scoped>
 div {
-    .post, .noPost {
-        margin: auto;
+    //.post, .noPost 
+    .seePost {
+        margin: 30px auto;
         height: auto;
         width: 50%;
         min-width: 380px;
-        max-width: 600;
+        max-width: 600px;
         background: white;       
         padding: 60px 45px 30px;
         border-radius: 16px;
@@ -113,20 +116,32 @@ div {
         display: flex;
         justify-content: flex-start;
     }
-    // .seePosts {
-    //     height: auto;
-    // }
+    .dateLikes {
+        display: flex;
+        justify-content: space-around;
+        border-top: 1px solid #fc2e06;
+    }
 }
 h3 {
     border: 1px solid black;
     padding: 20px;
+    border-radius: 50px;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .separate {
     margin: auto;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
     height: 4px;
     //border-bottom: 4px solid linear-gradient(65deg, #f89e8c, #fc2e06);
+    width: 50%;
+    max-width: 600px;
+}
+.userName {
     width: 100%;
-    //max-width: 600px;
+    border-bottom: 1px solid #fc2e06;
+}
+h4 {
+    position: absolute;
+    top: 10px;
 }
 </style>

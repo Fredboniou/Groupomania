@@ -44,7 +44,7 @@ exports.updatePost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-    const sql = "SELECT nom, prenom, content, date, DATE_FORMAT(date, '%d-%m-%Y %H:%i') AS date, likes FROM user INNER JOIN post ON user.id = post.userId";
+    const sql = "SELECT nom, prenom, content, date, DATE_FORMAT(date, 'le %d-%m-%Y à %H:%i') AS date, likes FROM user INNER JOIN post ON user.id = post.userId ORDER BY date DESC";
 
     db.query(sql, function(err, result) {
         if (err) {

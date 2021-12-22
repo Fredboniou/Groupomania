@@ -58,6 +58,7 @@ export default {
                 this.$router.push("/")
             }
         } else {
+            alert("Veuillez vous identifier pour accéder à cette partie")
             this.$router.push("/")
         }
     },
