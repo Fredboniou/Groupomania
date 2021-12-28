@@ -8,6 +8,7 @@ import Post from "@/views/Post.vue"
 import NewPost from "@/views/NewPost.vue"
 import CreateProfile from "@/views/CreateProfile.vue"
 import Profile from "@/views/Profile.vue"
+import Comments from "@/views/Comments.vue"
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,11 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: Profile
+  },
+  {
+    path: "/post/:id",
+    name: "Comments",
+    component: Comments
   },
   {
     path: "/*",

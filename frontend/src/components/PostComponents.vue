@@ -5,7 +5,7 @@
             <div class="newPost"><router-link to="/newpost">Créer une publication</router-link></div>|
             <button @click="disconnect">Se déconnecter</button>
         </div>
-        <div class="noPost" v-if="this.posts == []">
+        <div class="noPost" v-if="this.posts == ''">
             <h1>Aucun post à afficher</h1>
         </div>
         <div class="post" v-else>
@@ -25,6 +25,9 @@
                         <div class="postLikes">
                             <p><i class="fas fa-thumbs-up"></i> {{ post.likes }}</p>
                         </div>
+                    </div>
+                    <div class="comments">
+                        <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
                 </div>
                     <div class="separate"></div>
@@ -89,7 +92,7 @@ export default {
         disconnect() {
             localStorage.clear();
             this.$router.push("/");
-        }
+        },
     }
 }
 
@@ -143,5 +146,8 @@ h3 {
 h4 {
     position: absolute;
     top: 10px;
+}
+#comments {
+    text-decoration: none;
 }
 </style>
