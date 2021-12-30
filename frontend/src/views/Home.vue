@@ -33,7 +33,7 @@ export default {
   a {
     text-decoration: none;
     font-weight: bold;
-    color: #fff;
+    color: #000;
 
     &:hover {
       color: #fc2e06

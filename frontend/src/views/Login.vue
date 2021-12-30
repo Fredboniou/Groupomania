@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
 
   &:hover {
     color: #fc2e06;

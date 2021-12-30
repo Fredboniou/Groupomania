@@ -72,6 +72,8 @@ export default {
               self.$router.push("/posts")
             })
             .catch(function(error) {
+              // alert("Il y a une erreur dans votre email et/ou dans votre mot de passe !")
+              // self.$router.push("/");
               console.log(error);
             })
         } else {
@@ -168,5 +170,11 @@ button {
   visibility: visible;
   opacity: 1;
   color: red;
+}
+h3 {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 50px;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 </style>

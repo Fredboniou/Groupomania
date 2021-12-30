@@ -1,5 +1,6 @@
 <template>
     <div class="newPost">
+        <router-link to="/posts">Revenir au fil d'actualité</router-link>
         <h3>{{ NewPostMsg }}</h3>
         <div class="form-container">
             <form @submit.prevent="createPost" autocomplete="off">
@@ -149,5 +150,20 @@ button {
       background: grey;
       cursor: default;
   }
+}
+a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+
+    &:hover {
+        color: #fc2e06;
+    }
+}
+h3 {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 50px;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 </style>

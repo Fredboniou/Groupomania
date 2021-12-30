@@ -81,7 +81,7 @@ exports.update = (req, res) => {
     const school = req.body.school;
 
     const sql = "UPDATE user SET date_naissance=?, bio=?, ville=?, ecole=? WHERE id=?";
-    //const sql = "UPDATE user SET ? WHERE id=?";
+
     const values = [age, bio, city, school, userId];
     console.log(userId);
 
@@ -94,3 +94,18 @@ exports.update = (req, res) => {
         res.status(200).json({ message: "Profil modifié !" })
     });
 };
+
+exports.getProfile = (req, res) => {
+    const userId = req.params.id;
+
+    const sql = "SELECT nom, prenom, email, DATE_FORMAT(date_naissance, '%d-%m-%Y') AS date_naissance, bio, ville, ecole FROM user WHERE id=?"
+    
+    db.query(sql, [userId], function(err, result) {
+         if (err) {
+             console.log(err);
+             return res.status(401).json({ message: "Impossible d'accéder au profil !" })
+         }
+         console.log(userId);
+         res.status(200).json({ result })
+ })
+}

@@ -28,6 +28,7 @@
                         <p>posté le {{ com.date }}</p>
                     </div>
                 </div>
+                <div class="separate"></div>
             </div>
         </div>
     </div>
@@ -169,5 +170,53 @@ button {
       background: grey;
       cursor: default;
   }
+}
+h3 {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 50px;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
+.seeCom {
+    margin: 30px auto;
+    height: auto;
+    width: 50%;
+    min-width: 380px;
+    max-width: 600px;
+    background: white;       
+    padding: 60px 45px 30px;
+    border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+.userComName {
+    width: 100%;
+    border-bottom: 1px solid #fc2e06;
+}
+h4 {
+    position: absolute;
+    top: 10px;
+}
+.dateCom {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #fc2e06;
+}
+.separate {
+    margin: auto;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+    height: 4px;
+    //border-bottom: 4px solid linear-gradient(65deg, #f89e8c, #fc2e06);
+    width: 50%;
+    max-width: 600px;
+}
+a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+
+    &:hover {
+        color: #fc2e06;
+    }
 }
 </style>

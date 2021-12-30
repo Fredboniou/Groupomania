@@ -10,7 +10,7 @@ import PostComponents from "@/components/PostComponents.vue";
 export default {
     name: "Post",
     components: {
-        PostComponents
+        PostComponents,
     },
 }
 </script>

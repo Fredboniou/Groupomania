@@ -1,9 +1,9 @@
 <template>
     <div class="wall">
         <div class="head">
-            <div class="user"><router-link to="/createprofile">{{ fullname() }}</router-link></div> | 
+            <div class="user">Vous êtes connecté(e) en tant que<router-link to="/createprofile">{{ fullname() }}</router-link></div> | 
             <div class="newPost"><router-link to="/newpost">Créer une publication</router-link></div>|
-            <button @click="disconnect">Se déconnecter</button>
+            <button class="disconnect" @click="disconnect">Se déconnecter</button>
         </div>
         <div class="noPost" v-if="this.posts == ''">
             <h1>Aucun post à afficher</h1>
@@ -13,7 +13,7 @@
             <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
                 <div class="seePost">
                     <div class="userName">
-                        <h4>{{ post.prenom }} {{ post.nom }}</h4>
+                        <router-link :to="`/profile/${post.userId}`" id="userName"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
                     </div>
                     <div class="postContent">
                         <p>{{ post.content }}</p>
@@ -30,7 +30,7 @@
                         <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
                 </div>
-                    <div class="separate"></div>
+                <div class="separate"></div>
             </div>
         </div>
     </div>
@@ -117,7 +117,7 @@ div {
     }
     .head {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
     }
     .dateLikes {
         display: flex;
@@ -149,5 +149,34 @@ h4 {
 }
 #comments {
     text-decoration: none;
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    &:hover {
+        color: #fc2e06;
+    }
+}
+button {
+    margin-left: 10px;
+    border: none;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+    width: 10%;
+    height: 10%;
+    padding: 2px;
+    border-radius: 150px;
+    font-size: 1rem;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      filter: brightness(105%);
+      transform: translateX(2px);
+    }
 }
 </style>
