@@ -19,7 +19,7 @@
             <div class="allCom" v-for="(com, idx) in coms" :key="idx">
                 <div class="seeCom">
                     <div class="userComName">
-                        <h4>{{ com.prenom }} {{ com.nom }}</h4>
+                        <router-link :to="`/profile/${com.userId}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
                     </div>
                     <div class="comContent">
                         <p>{{ com.content }}</p>

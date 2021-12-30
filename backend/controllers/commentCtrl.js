@@ -48,7 +48,7 @@ exports.updateCom = (req, res) => {
 exports.getAllCom = (req, res) => {
     const postId = req.params.id;
     
-    const sql = "SELECT nom, prenom, comment.content, DATE_FORMAT(comment.date, '%d-%m-%Y %H:%i') AS date FROM comment INNER JOIN post ON post.id = comment.postId LEFT JOIN user on user.id = comment.userId WHERE post.id=? ORDER BY date DESC";
+    const sql = "SELECT comment.userId, nom, prenom, comment.content, DATE_FORMAT(comment.date, '%d-%m-%Y %H:%i') AS date FROM comment INNER JOIN post ON post.id = comment.postId LEFT JOIN user on user.id = comment.userId WHERE post.id=? ORDER BY date DESC";
     
     db.query(sql, [postId], function (err, result) {
         if (err) {

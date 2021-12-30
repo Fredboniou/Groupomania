@@ -4,6 +4,7 @@
         <div class="createProfile">
             <h3>{{ CreateProfileMsg }}</h3>
         </div>
+        <p>Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau.</p>
         <div class="form-container">
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="city">
@@ -115,7 +116,7 @@ export default {
                     })
                 }
             //}
-        }
+        },
     }
 }
 </script>
