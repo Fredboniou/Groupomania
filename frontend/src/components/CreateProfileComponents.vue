@@ -6,14 +6,14 @@
         </div>
         <p>Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau.</p>
         <div class="form-container">
-            <form @submit.prevent="submitForm" autocomplete="off">
+            <form name="form" ref="myForm" @submit.prevent="submitForm" autocomplete="off" enctype="multipart/form-data">
                 <div class="city">
                     <label for="city">Lieu de résidence</label>
-                    <input type="text" v-model="form.city" name="city" id="city" autocomplete="off">
+                    <input type="text" v-model="form.city" name="city" id="city" autocomplete="off" >
                 </div>
                 <div class="school">
                     <label for="school">Ou avez-vous étudié</label>
-                    <input type="text" v-model="form.school" name="school" id="school" autocomplete="off"> 
+                    <input type="text" v-model="form.school" name="school" id="school" autocomplete="off" > 
                 </div>
                 <div class="birthday-container">
                     <label for="birthday">Renseignez votre date de naissance</label>
@@ -21,7 +21,14 @@
                 </div>
                 <div class="bio-container">
                     <label for="bio">Dites en plus sur vous</label>
-                    <textarea name="textarea" v-model="form.userBio" id="bio" maxlength="300" autocomplete="off"></textarea>
+                    <textarea name="bio" v-model="form.userBio" id="bio" maxlength="300" autocomplete="off"></textarea>
+                </div>
+                <div class="picture-container">
+                    <label for="picture">Choisissez une photo de profil : </label>
+                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
+                    <div id="preview">
+                        <img v-if="preview" :src="preview" />
+                    </div>
                 </div>
                 <button>Valider le profil</button>
             </form>
@@ -47,7 +54,10 @@ export default {
                 school: "",
                 userBirthday: "",
                 userBio: "",
-            }
+                //url: "",
+            },
+            preview: null,
+            image: null,
         }
     },
     mounted() {
@@ -102,11 +112,22 @@ export default {
                 const school = this.form.school;
                 const birthday = this.form.userBirthday;
                 const bio = this.form.userBio;
-                const infos = {userId, city, school, birthday, bio};
-                console.log(infos);
+                const url = this.image.name;
+                //const infos = {userId, city, school, birthday, bio, url};
+                console.log(this.image);
+                
+                let formData = new FormData();
+                formData.append("userId", userId);
+                formData.append("city", city);
+                formData.append("school", school);
+                formData.append("birthday", birthday);
+                formData.append("bio", bio);
+                formData.append("url", url);
+                formData.append("image", this.image);
+                console.log(formData);
 
                 if (confirm("Voulez vous valider votre profil")) {
-                    axios.post("http://localhost:3000/api/user/profile", infos)
+                    axios.post("http://localhost:3000/api/user/profile", formData)
                     .then(function(response) {
                         console.log(response);
                     })
@@ -117,6 +138,30 @@ export default {
                 }
             //}
         },
+        previewImage: function(event) {
+            let input = event.target;
+            if (input.files) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    this.preview = e.target.result;
+                }
+                this.image=input.files[0];
+                reader.readAsDataURL(input.files[0]);
+                console.log(this.image.name);
+            }
+        },
+        // onFileChange(e) {
+        //     this.form.url = e.target.files[0];
+        //     console.log(this.form.url);
+        //     // this.form.url = this.$refs.file.files[0];
+        //     // console.log(this.form.url);
+        // }
+        // onFileChange(e) {
+        //     const file = e.target.files[0]
+        //     console.log(file);
+        //     this.form.url = URL.createObjectURL(file);
+        //     console.log(this.form.url);
+        // }
     }
 }
 </script>
@@ -126,6 +171,9 @@ export default {
 <style lang="scss" scoped>
 .form-container {
     display: flex;
+}
+.picture-container {
+    margin-top: 45px;
 }
 form{
   margin: auto;

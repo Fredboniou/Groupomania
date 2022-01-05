@@ -22,6 +22,9 @@
             <div class="profileSchool">
                 <p><span class="description">Dernière école fréquentée</span> : <span v-if="profile.ecole==null">Non renseigné</span><span v-else>{{ profile.ecole }}</span></p>
             </div>
+            <div class="profilePicture">
+                <img :src="profile.image" />
+            </div>
             <router-link to="/createProfile" v-if="this.userId==this.$route.params.id">Modifier le profil</router-link>
         </div>
     </div>

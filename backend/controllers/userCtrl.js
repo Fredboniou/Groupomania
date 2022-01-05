@@ -79,11 +79,20 @@ exports.update = (req, res) => {
     const bio = req.body.bio;
     const city = req.body.city;
     const school = req.body.school;
+    let image;
+    
+    if (req.file) {
+        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+        console.log(image);
+    } else {
+        image = null;
+    }
+    
+    const sql = "UPDATE user SET date_naissance=?, bio=?, ville=?, ecole=?, image=? WHERE id=?";
 
-    const sql = "UPDATE user SET date_naissance=?, bio=?, ville=?, ecole=? WHERE id=?";
-
-    const values = [age, bio, city, school, userId];
+    const values = [age, bio, city, school, image, userId];
     console.log(userId);
+    console.log(image);
 
     db.query(sql, values, function(err, result) {
         if (err) {
@@ -98,7 +107,7 @@ exports.update = (req, res) => {
 exports.getProfile = (req, res) => {
     const userId = req.params.id;
 
-    const sql = "SELECT nom, prenom, email, DATE_FORMAT(date_naissance, '%d-%m-%Y') AS date_naissance, bio, ville, ecole FROM user WHERE id=?"
+    const sql = "SELECT nom, prenom, email, DATE_FORMAT(date_naissance, '%d-%m-%Y') AS date_naissance, bio, ville, ecole, image FROM user WHERE id=?"
     
     db.query(sql, [userId], function(err, result) {
          if (err) {
