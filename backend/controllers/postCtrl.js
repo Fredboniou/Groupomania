@@ -3,9 +3,17 @@ const db = require("../dbconnect");
 exports.createPost = (req, res) => {
     const userId = req.body.userId;
     const content = req.body.content;
+    let image;
 
-    const sql = "INSERT INTO post VALUES (NULL, ?, ?, NOW(), 0)";
-    const values = [userId, content];
+    if (req.file) {
+        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+        console.log(image);
+    } else {
+        image = null;
+    }
+
+    const sql = "INSERT INTO post VALUES (NULL, ?, ?, NOW(), 0, ?)";
+    const values = [userId, content, image];
 
     db.query(sql, values, function(err, result) {
         if (err) {
@@ -44,7 +52,7 @@ exports.updatePost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-    const sql = "SELECT post.id, userId, nom, prenom, content, date, DATE_FORMAT(date, 'le %d-%m-%Y à %H:%i') AS date, likes FROM user INNER JOIN post ON user.id = post.userId ORDER BY date DESC";
+    const sql = "SELECT post.id, userId, nom, prenom, content, DATE_FORMAT(post.date, 'le %d-%m-%Y à %H:%i') AS date, likes, post.image FROM user INNER JOIN post ON user.id = post.userId ORDER BY post.date DESC";
 
     db.query(sql, function(err, result) {
         if (err) {

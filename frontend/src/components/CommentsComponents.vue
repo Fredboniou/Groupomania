@@ -6,7 +6,14 @@
         <div class="createCom">
              <form @submit.prevent="createCom" autocomplete="off">
                 <div class="com-container">
-                    <textarea  v-model="form.content" name="textarea" id="comment" maxlength="300" autocomplete="off" placeholder="Ecrivez un commentaire..."></textarea>
+                    <textarea  v-model="form.content" name="textarea" id="comment" maxlength="300" autocomplete="off" placeholder="Ecrivez un commentaire..."></textarea>               
+                </div>
+                <div class="picture-container">
+                    <label for="picture">Ajoutez une image pour illustrer votre commentaire : </label>
+                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
+                    <div id="preview">
+                        <img v-if="form.preview" :src="form.preview" />
+                    </div>
                 </div>
                 <button :disabled="!contentIsValid">Publier</button>
             </form>
@@ -22,7 +29,8 @@
                         <router-link :to="`/profile/${com.userId}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
                     </div>
                     <div class="comContent">
-                        <p>{{ com.content }}</p>
+                        <p>{{ com.content }}</p><br>
+                        <img v-if="com.image != null" :src="com.image" alt="">
                     </div>
                     <div class="dateCom">
                         <p>posté le {{ com.date }}</p>
@@ -50,6 +58,8 @@ export default {
             form: {
                 userId: JSON.parse(localStorage.getItem("form")).userId,
                 content: "",
+                preview: null,
+                image: null,
             }
         }
     },
@@ -82,13 +92,21 @@ export default {
                 const userId = this.form.userId;
                 const postId = this.$route.params.id;
                 const content = this.form.content;
-                const infos = {userId, postId, content};
+                const image = this.form.image;
+                //const infos = {userId, postId, content};
                 const self = this;
                 console.log(postId);
 
+                let formData = new FormData();
+                formData.append("userId", userId);
+                formData.append("postId", postId);
+                formData.append("content", content);
+                formData.append("image", image)
+                console.log(formData);
+
                 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-                axios.post("http://localhost:3000/api/comment/", infos, {
+                axios.post("http://localhost:3000/api/comment/", formData, {
                     headers: {
                         Authorization: "bearer " + token
                     },
@@ -124,6 +142,19 @@ export default {
             .catch(function(error) {
                 console.log(error);
             })
+        },
+        previewImage: function(event) {
+            const self = this;
+            let input = event.target;
+            if (input.files) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    self.form.preview = e.target.result;
+                }
+                self.form.image=input.files[0];
+                reader.readAsDataURL(input.files[0]);
+                console.log(self.form.image.name);
+            }
         },
     }
 }
@@ -218,5 +249,8 @@ a {
     &:hover {
         color: #fc2e06;
     }
+}
+img {
+    width: 90%;
 }
 </style>

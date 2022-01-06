@@ -25,7 +25,10 @@
             <div class="profilePicture">
                 <img :src="profile.image" />
             </div>
-            <router-link to="/createProfile" v-if="this.userId==this.$route.params.id">Modifier le profil</router-link>
+            <div class="ownerOptions" v-if="this.userId==this.$route.params.id">
+                <router-link to="/createProfile">Modifier le profil</router-link>
+                <button @click="deleteProfile">Supprimer le profil</button>
+            </div>
         </div>
     </div>
 </template>
@@ -80,6 +83,29 @@ export default {
                 console.log(error)
             })
         },
+        deleteProfile() {
+            const data = JSON.parse(localStorage.getItem("form"));
+            const token = data.token;
+            const userId = this.$route.params.id;
+
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+            if (confirm("Vous êtes sur le point de supprimer votre profil. Tous les posts et commentaires qui y sont ratachés seront supprimés. Voulez vous continuer ?")) {
+
+                axios.delete("http://localhost:3000/api/user/" + userId, {
+                    headers: {
+                        Authorization: "bearer " + token
+                    },
+                })
+                .then(function(response) {
+                    this.$router.push("/");
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+            }
+        },
     }
 }
 </script>
@@ -105,7 +131,7 @@ a {
     background: white;       
     padding: 60px 45px 30px;
     border-radius: 16px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 .profileName {
@@ -117,5 +143,14 @@ a {
 .description {
     text-decoration: underline;
     font-weight: bold;
+}
+img {
+    overflow : hidden;
+	-webkit-border-radius : 50px;
+	-moz-border-radius : 50px;
+	border-radius: 50%;
+	width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
 }
 </style>

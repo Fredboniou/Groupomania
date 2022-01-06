@@ -16,7 +16,8 @@
                         <router-link :to="`/profile/${post.userId}`" id="userName"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
                     </div>
                     <div class="postContent">
-                        <p>{{ post.content }}</p>
+                        <p>{{ post.content }}</p><br>
+                        <img v-if="post.image != null" :src="post.image" alt="">
                     </div>
                     <div class="dateLikes">
                         <div class="postDate">
@@ -29,6 +30,10 @@
                     <div class="comments">
                         <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
+                    <!-- <div class="ownerOptions" v-if="this.userId==post.userId">
+                        <button>Modifier</button>
+                        <button>Supprimer</button>
+                    </div> -->
                 </div>
                 <div class="separate"></div>
             </div>
@@ -45,6 +50,7 @@ export default {
     name: "Post",
     data() {
         return {
+            userId: JSON.parse(localStorage.getItem("form")).userId,
             posts: [],
         }
     },    
@@ -52,6 +58,7 @@ export default {
         if(localStorage.getItem("form")) {
             try {
                 this.getAllPosts()
+                console.log(this.userId);
             } catch(error) {
                 localStorage.removeItem("form");
                 this.$router.push("/")
@@ -178,5 +185,8 @@ button {
       filter: brightness(105%);
       transform: translateX(2px);
     }
+}
+img {
+    width: 90%;
 }
 </style>

@@ -129,6 +129,8 @@ export default {
                 if (confirm("Voulez vous valider votre profil")) {
                     axios.post("http://localhost:3000/api/user/profile", formData)
                     .then(function(response) {
+                        alert("La modification de votre profil à bien été prise en compte")
+                        window.location.reload();
                         console.log(response);
                     })
                 
@@ -267,5 +269,14 @@ h3 {
     padding: 20px;
     border-radius: 50px;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
+img {
+    overflow : hidden;
+	-webkit-border-radius : 50px;
+	-moz-border-radius : 50px;
+	border-radius: 50%;
+	width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
 }
 </style>

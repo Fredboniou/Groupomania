@@ -4,9 +4,17 @@ exports.createCom = (req, res) => {
     const userId = req.body.userId;
     const postId = req.body.postId;
     const content = req.body.content;
+    let image;
+
+    if (req.file) {
+        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+        console.log(image);
+    } else {
+        image = null;
+    }
     
-    const sql = "INSERT INTO comment VALUES (NULL, ?, ?, ?, NOW())";
-    const values = [userId, postId, content];
+    const sql = "INSERT INTO comment VALUES (NULL, ?, ?, ?, NOW(), ?)";
+    const values = [userId, postId, content, image];
 
     db.query(sql, values, function (err, result) {
         if (err) {
@@ -48,7 +56,7 @@ exports.updateCom = (req, res) => {
 exports.getAllCom = (req, res) => {
     const postId = req.params.id;
     
-    const sql = "SELECT comment.userId, nom, prenom, comment.content, DATE_FORMAT(comment.date, '%d-%m-%Y %H:%i') AS date FROM comment INNER JOIN post ON post.id = comment.postId LEFT JOIN user on user.id = comment.userId WHERE post.id=? ORDER BY date DESC";
+    const sql = "SELECT comment.userId, nom, prenom, comment.content, DATE_FORMAT(comment.date, '%d-%m-%Y %H:%i') AS date, comment.image FROM comment INNER JOIN post ON post.id = comment.postId LEFT JOIN user on user.id = comment.userId WHERE post.id=? ORDER BY comment.date DESC";
     
     db.query(sql, [postId], function (err, result) {
         if (err) {

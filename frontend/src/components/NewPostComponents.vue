@@ -6,7 +6,14 @@
             <form @submit.prevent="createPost" autocomplete="off">
                 <div class="post-container">
                     <label for="content">Votre publication</label>
-                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required></textarea>
+                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required></textarea>                 
+                </div>
+                <div class="picture-container">
+                    <label for="picture">Ajoutez une image pour illustrer votre post : </label>
+                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
+                    <div id="preview">
+                        <img v-if="form.preview" :src="form.preview" />
+                    </div>
                 </div>
                 <button :disabled="!contentIsValid">Publier</button>
             </form>
@@ -29,6 +36,8 @@ export default {
             form: {
                 userId: JSON.parse(localStorage.getItem("form")).userId,
                 content: "",
+                preview: null,
+                image: null,
             }
         }
     },
@@ -59,12 +68,22 @@ export default {
                 const token = data.token;
                 const userId = this.form.userId;
                 const content = this.form.content;
-                const infos = {userId, content};
+                const url = this.form.image.name;
+                const image = this.form.image;
+                //const infos = {userId, content};
                 const self = this;
+
+                let formData = new FormData();
+                formData.append("userId", userId);
+                formData.append("content", content);
+                formData.append("url", url);
+                formData.append("image", image);
+                console.log(formData);
+
 
                 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-                axios.post("http://localhost:3000/api/post/",infos, {
+                axios.post("http://localhost:3000/api/post/", formData, {
                     headers: {
                         Authorization: "bearer " + token
                     },
@@ -76,6 +95,19 @@ export default {
                 .catch(function(error) {
                     console.log(error);
                 })
+            }
+        },
+        previewImage: function(event) {
+            const self = this;
+            let input = event.target;
+            if (input.files) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    self.form.preview = e.target.result;
+                }
+                self.form.image=input.files[0];
+                reader.readAsDataURL(input.files[0]);
+                console.log(self.form.image.name);
             }
         },
     }
@@ -165,5 +197,8 @@ h3 {
     padding: 20px;
     border-radius: 50px;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
+.picture-container {
+    margin-top: 50px;
 }
 </style>
