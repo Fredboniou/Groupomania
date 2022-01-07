@@ -30,10 +30,10 @@
                     <div class="comments">
                         <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
-                    <!-- <div class="ownerOptions" v-if="this.userId==post.userId">
-                        <button>Modifier</button>
-                        <button>Supprimer</button>
-                    </div> -->
+                    <div class="ownerOptions" v-if="userId==post.userId">
+                        <button class="modifDel">Modifier</button>
+                        <button class="modifDel" @click="deletePost(post.id)">Supprimer</button>
+                    </div>
                 </div>
                 <div class="separate"></div>
             </div>
@@ -50,8 +50,8 @@ export default {
     name: "Post",
     data() {
         return {
-            userId: JSON.parse(localStorage.getItem("form")).userId,
             posts: [],
+            userId: JSON.parse(localStorage.getItem("form")).userId,
         }
     },    
     mounted() {
@@ -100,6 +100,28 @@ export default {
             localStorage.clear();
             this.$router.push("/");
         },
+        deletePost(id) {
+            const data = JSON.parse(localStorage.getItem("form"));
+            const token = data.token;
+
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+            if (confirm("Vous êtes sur le point de supprimer votre post. Tous les commentaires qui y sont rattachés seront supprimés. Voulez vous continuer ?")) {
+
+                axios.delete("http://localhost:3000/api/post/" + id, {
+                    headers: {
+                        Authorization: "bearer " + token
+                    },
+                })
+                .then(function(response) {
+                    window.location.reload();
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+            }
+         }
     }
 }
 
@@ -168,11 +190,10 @@ a {
         color: #fc2e06;
     }
 }
-button {
+.modifDel, .disconnect {
     margin-left: 10px;
     border: none;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-    width: 10%;
     height: 10%;
     padding: 2px;
     border-radius: 150px;
@@ -185,6 +206,9 @@ button {
       filter: brightness(105%);
       transform: translateX(2px);
     }
+}
+.disconnect {
+        width: 10%;
 }
 img {
     width: 90%;

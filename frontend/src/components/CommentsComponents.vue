@@ -35,6 +35,10 @@
                     <div class="dateCom">
                         <p>posté le {{ com.date }}</p>
                     </div>
+                    <div class="ownerOptions" v-if="form.userId==com.userId">
+                        <button class="modifDel">Modifier</button>
+                        <button class="modifDel" @click="deleteCom(com.id)">Supprimer</button>
+                    </div>
                 </div>
                 <div class="separate"></div>
             </div>
@@ -156,6 +160,27 @@ export default {
                 console.log(self.form.image.name);
             }
         },
+        deleteCom(id) {
+            const data = JSON.parse(localStorage.getItem("form"));
+            const token = data.token;
+            
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+            if (confirm("Voulez vous supprimer ce commentaire ?")) {
+                axios.delete("http://localhost:3000/api/comment/" + id, {
+                    headers: {
+                        Authorization: "bearer " + token
+                    },
+                })
+                .then(function(response) {
+                    window.location.reload();
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+            }
+        }
     }
 }
 </script>

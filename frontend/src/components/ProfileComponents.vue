@@ -90,7 +90,7 @@ export default {
 
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-            if (confirm("Vous êtes sur le point de supprimer votre profil. Tous les posts et commentaires qui y sont ratachés seront supprimés. Voulez vous continuer ?")) {
+            if (confirm("Vous êtes sur le point de supprimer votre profil. Tous les posts et commentaires qui y sont rattachés seront supprimés. Voulez vous continuer ?")) {
 
                 axios.delete("http://localhost:3000/api/user/" + userId, {
                     headers: {
