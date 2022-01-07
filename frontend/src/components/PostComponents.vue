@@ -30,8 +30,8 @@
                     <div class="comments">
                         <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
-                    <div class="ownerOptions" v-if="userId==post.userId">
-                        <router-link :to="`/modifpost/${post.id}`"><button class="modifDel">Modifier</button></router-link>
+                    <div class="ownerOptions" v-if="userId==post.userId || admin==1">
+                        <router-link :to="`/modifpost/${post.id}`" v-if="userId==post.userId"><button class="modifDel">Modifier</button></router-link>
                         <button class="modifDel" @click="deletePost(post.id)">Supprimer</button>
                     </div>
                 </div>
@@ -52,6 +52,7 @@ export default {
         return {
             posts: [],
             userId: JSON.parse(localStorage.getItem("form")).userId,
+            admin: JSON.parse(localStorage.getItem("form")).admin,
         }
     },    
     mounted() {
@@ -59,6 +60,7 @@ export default {
             try {
                 this.getAllPosts()
                 console.log(this.userId);
+                console.log(this.admin);
             } catch(error) {
                 localStorage.removeItem("form");
                 this.$router.push("/")

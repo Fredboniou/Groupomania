@@ -65,6 +65,7 @@ export default {
                 userId: response.data.userId,
                 name: response.data.userName,
                 firstname: response.data.userFirstname,
+                admin: response.data.admin,
                 token: response.data.token
               });
               const parsed = JSON.stringify(data);

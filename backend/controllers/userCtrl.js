@@ -47,6 +47,7 @@ exports.login = (req, res) => {
                     userId: result[0].id,
                     userName: result[0].nom,
                     userFirstname: result[0].prenom,
+                    admin: result[0].admin,
                     token: jwt.sign({
                         userId: result[0].id,
                         userName: result[0].nom,
@@ -107,7 +108,7 @@ exports.update = (req, res) => {
 exports.getProfile = (req, res) => {
     const userId = req.params.id;
 
-    const sql = "SELECT nom, prenom, email, DATE_FORMAT(date_naissance, '%d-%m-%Y') AS date_naissance, bio, ville, ecole, image FROM user WHERE id=?"
+    const sql = "SELECT nom, prenom, email, admin, DATE_FORMAT(date_naissance, '%d-%m-%Y') AS date_naissance, bio, ville, ecole, image FROM user WHERE id=?"
     
     db.query(sql, [userId], function(err, result) {
          if (err) {

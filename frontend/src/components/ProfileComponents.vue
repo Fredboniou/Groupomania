@@ -25,7 +25,7 @@
             <div class="profilePicture">
                 <img :src="profile.image" />
             </div>
-            <div class="ownerOptions" v-if="this.userId==this.$route.params.id">
+            <div class="ownerOptions" v-if="this.userId==this.$route.params.id || this.admin==1" >
                 <router-link to="/createProfile">Modifier le profil</router-link>
                 <button @click="deleteProfile">Supprimer le profil</button>
             </div>
@@ -42,6 +42,7 @@ export default {
     data() {
         return {
             userId: JSON.parse(localStorage.getItem("form")).userId,
+            admin: JSON.parse(localStorage.getItem("form")).admin,
             profile: [],
         }
     },
@@ -50,6 +51,7 @@ export default {
             try {
                 console.log(localStorage);
                 console.log(this.userId);
+                console.log(this.admin);
                 this.getProfile();
             } catch(error) {
                 localStorage.removeItem("form");

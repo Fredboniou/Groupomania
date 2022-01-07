@@ -35,8 +35,7 @@
                     <div class="dateCom">
                         <p>posté le {{ com.date }}</p>
                     </div>
-                    <div class="ownerOptions" v-if="form.userId==com.userId">
-                        <button class="modifDel">Modifier</button>
+                    <div class="ownerOptions" v-if="form.userId==com.userId || admin==1">
                         <button class="modifDel" @click="deleteCom(com.id)">Supprimer</button>
                     </div>
                 </div>
@@ -64,7 +63,8 @@ export default {
                 content: "",
                 preview: null,
                 image: null,
-            }
+            },
+            admin: JSON.parse(localStorage.getItem("form")).admin,
         }
     },
     mounted() {
