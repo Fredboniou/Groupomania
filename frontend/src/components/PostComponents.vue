@@ -31,7 +31,7 @@
                         <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
                     <div class="ownerOptions" v-if="userId==post.userId">
-                        <button class="modifDel">Modifier</button>
+                        <router-link :to="`/modifpost/${post.id}`"><button class="modifDel">Modifier</button></router-link>
                         <button class="modifDel" @click="deletePost(post.id)">Supprimer</button>
                     </div>
                 </div>

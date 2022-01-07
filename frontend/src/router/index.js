@@ -9,6 +9,7 @@ import NewPost from "@/views/NewPost.vue"
 import CreateProfile from "@/views/CreateProfile.vue"
 import Profile from "@/views/Profile.vue"
 import Comments from "@/views/Comments.vue"
+import ModifPost from "@/views/ModifPost.vue"
 
 Vue.use(VueRouter)
 
@@ -60,6 +61,11 @@ const routes = [
     path: "/post/:id",
     name: "Comments",
     component: Comments
+  },
+  {
+    path: "/modifpost/:id",
+    name: "ModifPost",
+    component: ModifPost
   },
   {
     path: "/*",

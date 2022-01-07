@@ -39,9 +39,17 @@ exports.deletePost = (req, res) => {
 exports.updatePost = (req, res) => {
     const postId = req.params.id;
     const content = req.body.content;
+    let image;
 
-    const sql = "UPDATE post SET content=?, date=NOW() WHERE id=?"
-    const values = [content, postId];
+    if (req.file) {
+        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+        console.log(image);
+    } else {
+        image = null;
+    }
+
+    const sql = "UPDATE post SET content=?, date=NOW(), image=? WHERE id=?"
+    const values = [content, image, postId];
 
     db.query(sql, values, function(err, result) {
         if (err) {
