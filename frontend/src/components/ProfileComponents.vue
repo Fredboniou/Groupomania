@@ -1,33 +1,33 @@
 <template>
     <div class="seeProfile">
         <div class="header">
-            <router-link to="/posts">Revenir au fil d'actualité</router-link>
+            <router-link to="/posts" aria-label="Revenir au fil d'actualité">Revenir au fil d'actualité</router-link>
         </div>
         <div class="profile">
             <div class="profileName">
-                <h3>Vous visitez le profil de {{ profile.prenom }} {{profile.nom }}</h3>
+                <h3 :aria-label="`Vous visitez le profil de ${profile.prenom} ${profile.nom}`">Vous visitez le profil de {{ profile.prenom }} {{profile.nom }}</h3>
             </div>
             <div class="profileMail">
-                <p><span class="description">E-mail de contact</span> : <a :href="`mailto:#`">{{ profile.email }}</a></p>
+                <p><span class="description" aria-label="Adresse mail de contact">E-mail de contact</span> : <a :href="`mailto:#`" :aria-label="`${profile.email}`">{{ profile.email }}</a></p>
             </div>
             <div class="profileBirthday">
-                <p><span class="description">Date de naissance</span> : <span v-if="profile.date_naissance==null">Non renseigné</span><span v-else>{{ profile.date_naissance }}</span></p>
+                <p><span class="description" aria-label="Date de naissance">Date de naissance</span> : <span v-if="profile.date_naissance==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.date_naissance}`">{{ profile.date_naissance }}</span></p>
             </div>
             <div class="profileBio">
-                <p><span class="description">Bio</span> : <span v-if="profile.bio==null">Non renseigné</span><span v-else>{{ profile.bio }}</span></p>
+                <p><span class="description" aria-label="Bio">Bio</span> : <span v-if="profile.bio==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.bio}`">{{ profile.bio }}</span></p>
             </div>
             <div class="profileCity">
-                <p><span class="description">Lieu de résidence</span> : <span v-if="profile.ville==null">Non renseigné</span><span v-else>{{ profile.ville }}</span></p>
+                <p><span class="description" aria-label="Lieu de résidence">Lieu de résidence</span> : <span v-if="profile.ville==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ville}`">{{ profile.ville }}</span></p>
             </div>
             <div class="profileSchool">
-                <p><span class="description">Dernière école fréquentée</span> : <span v-if="profile.ecole==null">Non renseigné</span><span v-else>{{ profile.ecole }}</span></p>
+                <p><span class="description" aria-label="Dernière école fréquentée">Dernière école fréquentée</span> : <span v-if="profile.ecole==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ecole}`">{{ profile.ecole }}</span></p>
             </div>
             <div class="profilePicture">
                 <img :src="profile.image" />
             </div>
             <div class="ownerOptions" v-if="this.userId==this.$route.params.id || this.admin==1" >
-                <router-link to="/createProfile">Modifier le profil</router-link>
-                <button @click="deleteProfile">Supprimer le profil</button>
+                <router-link to="/createProfile" v-if="this.userId==this.$route.params.id" aria-label="Modifier le profil">Modifier le profil</router-link>
+                <button @click="deleteProfile" aria-label="Supprimer le profil">Supprimer le profil</button>
             </div>
         </div>
     </div>

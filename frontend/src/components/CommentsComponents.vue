@@ -1,35 +1,35 @@
 <template>
     <div class="allComments">
         <div class="header">
-            <router-link to="/posts">Revenir au fil d'actualité</router-link>
+            <router-link to="/posts" aria-label="Retourner à la page d'accueil">Revenir au fil d'actualité</router-link>
         </div>
         <div class="createCom">
              <form @submit.prevent="createCom" autocomplete="off">
                 <div class="com-container">
-                    <textarea  v-model="form.content" name="textarea" id="comment" maxlength="300" autocomplete="off" placeholder="Ecrivez un commentaire..."></textarea>               
+                    <textarea  v-model="form.content" name="textarea" id="comment" maxlength="300" autocomplete="off" placeholder="Ecrivez un commentaire..." aria-label="Entrez votre commentaire"></textarea>               
                 </div>
                 <div class="picture-container">
-                    <label for="picture">Ajoutez une image pour illustrer votre commentaire : </label>
+                    <label for="picture" aria-label="Ajoutez une image à votre commentaire">Ajoutez une image pour illustrer votre commentaire : </label>
                     <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
                     <div id="preview">
                         <img v-if="form.preview" :src="form.preview" />
-                    </div>
+                    </div> 
                 </div>
-                <button :disabled="!contentIsValid">Publier</button>
+                <button :disabled="!contentIsValid" aria-label="Publier">Publier</button>
             </form>
         </div>
         <div class="noCom" v-if="this.coms == ''">
-            <h1>Aucun commentaire pour le moment</h1>
+            <h1 aria-label="Aucun commentaire pour le moment">Aucun commentaire pour le moment</h1>
         </div>
         <div class="displayCom" v-else>
-            <h3>{{ ComMsg }}</h3>
+            <h3 aria-label="page des commentaires">{{ ComMsg }}</h3>
             <div class="allCom" v-for="(com, idx) in coms" :key="idx">
                 <div class="seeCom">
                     <div class="userComName">
-                        <router-link :to="`/profile/${com.userId}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
+                        <router-link :to="`/profile/${com.userId}`" :aria-label="`Voir le profil de ${com.prenom} ${com.nom}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
                     </div>
                     <div class="comContent">
-                        <p>{{ com.content }}</p><br>
+                        <p :aria-label="`commentaire : ${com.content}`">{{ com.content }}</p><br>
                         <img v-if="com.image != null" :src="com.image" alt="">
                     </div>
                     <div class="dateCom">
@@ -119,6 +119,7 @@ export default {
                     console.log(response);
                     self.getAllComs();
                     self.form.content = "";
+                    self.form.preview = "";
                 })
                 .catch(function(error) {
                     console.log(error);

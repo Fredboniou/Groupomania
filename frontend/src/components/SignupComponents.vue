@@ -1,26 +1,26 @@
 <template>
     <div class="signup">
-        <h3>{{ signupMsg }}</h3>
+        <h3 aria-label="Inscrivez vous">{{ signupMsg }}</h3>
         <div class="form-container">
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="name-container">
                     <label for="name">Nom</label>
-                    <input type="text" v-model="form.name" name="name" id="name" autocomplete="off" aria-required="true" :aria-label="nom" required>
+                    <input type="text" v-model="form.name" name="name" id="name" autocomplete="off" aria-required="true" aria-label="Renseignez votre nom" required>
                     <span  v-if="!nameIsValid" class="error">Merci de renseigner votre nom</span>
                 </div>
                 <div class="firstname-container">
                     <label for="firstname">Prénom</label>
-                    <input type="text" v-model="form.firstname" name="firstname" id="firstname" autocomplete="off" aria-required="true" :aria-label="prenom" required>
+                    <input type="text" v-model="form.firstname" name="firstname" id="firstname" autocomplete="off" aria-required="true" aria-label="Renseignez votre prenom" required>
                     <span v-if="!firstnameIsValid" class="error">Merci de renseigner votre prénom</span>
                 </div>
                 <div class="email-container">
                     <label for="email">E-mail</label>
-                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="off" aria-required="true" :aria-label="mail" required>
+                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="off" aria-required="true" aria-label="Renseignez votre adresse mail" required>
                     <span v-if="!emailIsValid" class="error">Merci de renseigner l'e-mail</span>
                 </div>
                 <div class="password-container">
                     <label for="password">Mot de passe</label>
-                    <input type="password" v-model="form.password" name="password" id="password" autocomplete="off" aria-required="true" :aria-label="mot-de-passe" required>
+                    <input type="password" v-model="form.password" name="password" id="password" autocomplete="off" aria-required="true" aria-label="Créez votre mot de passe" required>
                     <p id="progress-bar" class="progressRed" v-if="(form.password.length >= 1) && (form.password.length < 8)"></p>
                     <p id="progress-bar" class="progressBlue" v-if="(form.password.length >= 8) && (form.password.length < 12)"></p>
                     <p id="progress-bar" class="progressGreen" v-if="form.password.length >= 12"></p>
@@ -33,10 +33,10 @@
                 </div>
                 <div class="confirm-container">
                     <label for="confirm">Confirmer mot de passe</label>
-                    <input type="password" v-model="form.confirm" name="confirm" id="confirm" autocomplete="off" aria-required="true" :aria-label="confirmer-mot-de-passe" required>
+                    <input type="password" v-model="form.confirm" name="confirm" id="confirm" autocomplete="off" aria-required="true" aria-label="confirmer votre mot de passe" required>
                     <span v-if="form.confirm != form.password">Les mots de passe ne correspondent pas</span>
                 </div>
-                <button :aria-label="valider">Créer mon compte</button>
+                <button aria-label="valider">Créer mon compte</button>
             </form>
         </div>
     </div>

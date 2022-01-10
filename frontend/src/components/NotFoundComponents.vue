@@ -1,6 +1,6 @@
 <template>
     <div class="notfound">
-        <p>{{ errorMsg }}</p>
+        <p aria-label="Page introuvable">{{ errorMsg }}</p>
     </div>
 </template>
 

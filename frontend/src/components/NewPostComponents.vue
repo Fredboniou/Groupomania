@@ -1,21 +1,21 @@
 <template>
     <div class="newPost">
         <router-link to="/posts">Revenir au fil d'actualité</router-link>
-        <h3>{{ NewPostMsg }}</h3>
+        <h3 aria-label="Créez votre publication">{{ NewPostMsg }}</h3>
         <div class="form-container">
             <form @submit.prevent="createPost" autocomplete="off">
                 <div class="post-container">
                     <label for="content">Votre publication</label>
-                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required></textarea>                 
+                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Votre publication"></textarea>                 
                 </div>
                 <div class="picture-container">
                     <label for="picture">Ajoutez une image pour illustrer votre post : </label>
-                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
+                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image" aria-label="Vous pouvez ajouter une image">
                     <div id="preview">
                         <img v-if="form.preview" :src="form.preview" />
                     </div>
                 </div>
-                <button :disabled="!contentIsValid">Publier</button>
+                <button :disabled="!contentIsValid" aria-label="Valider votre publication">Publier</button>
             </form>
         </div>
     </div>

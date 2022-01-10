@@ -1,21 +1,21 @@
 <template>
     <div class="newPost">
-        <router-link to="/posts">Annuler la modification</router-link>
-        <h3>{{ ModifMsg }}</h3>
+        <router-link to="/posts" aria-label="Annuler la modification">Annuler la modification</router-link>
+        <h3 aria-label="Modifiez votre publication">{{ ModifMsg }}</h3>
         <div class="form-container">
             <form @submit.prevent="modifPost" autocomplete="off">
                 <div class="post-container">
                     <label for="content">Créez votre nouvelle publication</label>
-                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required></textarea>                 
+                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Créez votre nouvelle publication"></textarea>                 
                 </div>
                 <div class="picture-container">
-                    <label for="picture">Ajoutez une image : </label>
+                    <label for="picture" aria-label="Ajoutez une image">Ajoutez une image : </label>
                     <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
                     <div id="preview">
                         <img v-if="form.preview" :src="form.preview" />
                     </div>
                 </div>
-                <button :disabled="!contentIsValid">Modifier</button>
+                <button :disabled="!contentIsValid" aria-label="Valider votre modification">Modifier</button>
             </form>
         </div>
     </div>

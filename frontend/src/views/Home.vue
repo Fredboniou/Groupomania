@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/login">Accès membre</router-link> |
-      <router-link to="/signup">Créer un compte</router-link>
+      <router-link to="/" aria-label="Page d'accueil">Home</router-link> |
+      <router-link to="/about" aria-label="A propos de notre société">About</router-link> |
+      <router-link to="/login" aria-label="Accès membre">Accès membre</router-link> |
+      <router-link to="/signup" aria-label="Créer un compte">Créer un compte</router-link>
     </div>
     <img alt="logo" src="../assets/icone-black-rs.png">
     <HomeComponents msg="Bienvenue sur le réseau social Groupomania, créé pour vous, avec vous !"/>

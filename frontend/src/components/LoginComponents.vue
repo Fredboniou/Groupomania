@@ -1,19 +1,19 @@
 <template>
     <div class="login">
-        <h3>{{ loginMsg }}</h3>
+        <h3 aria-label="Identifiez vous">{{ loginMsg }}</h3>
         <div class="form-container">
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="email-container">
                     <label for="email">E-mail</label>
-                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="off" required>
+                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="off" required aria-required="true" aria-label="Renseignez votre mail">
                     <span v-if="!emailIsValid" class="error">Merci de renseigner l'e-mail</span>
                 </div>
                 <div class="password-container">
                     <label for="password">Mot de passe</label>
-                    <input type="password" v-model="form.password" name="password" id="password" autocomplete="off">
+                    <input type="password" v-model="form.password" name="password" id="password" autocomplete="off" required aria-required="true" aria-label="Entrez votre mot de passe">
                     <span v-if="!passwordIsValid" class="error">Merci de renseigner le mot de passe</span>
                 </div>
-                <button>Accès membre</button>
+                <button aria-label="Connectez-vous">Accès membre</button>
             </form>
         </div>
     </div>

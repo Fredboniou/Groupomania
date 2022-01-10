@@ -2,7 +2,7 @@
     <div class="error">
         <NotFoundComponents errorMsg="Error" />
         <img src="@/assets/NotFound.jpg" />
-        <div class="return">
+        <div class="return" aria-label="Revenir à l'accueil">
             Revenir à l'<router-link to="/">accueil</router-link>
         </div>
     </div>
