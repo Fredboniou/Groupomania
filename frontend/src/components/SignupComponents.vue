@@ -92,6 +92,8 @@ export default {
                 console.log(response);
                 })
                 .catch(function(error) {
+                  alert("Cette adresse mail est déjà utilisée")
+                  self.form.email = null;
                  console.log(error);
                 })
             } else {
