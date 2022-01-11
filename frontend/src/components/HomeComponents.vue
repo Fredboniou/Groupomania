@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <p>{{ msg }}</p>
   </div>
 </template>
 
@@ -15,18 +15,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+p {
+  font-size: 3rem;
+  font-weight: bold;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+@media all and (max-width : 1024px) {
+  p {
+    font-size: 2rem;
+  }
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+@media all and (max-width: 768px) {
+  p {
+    font-size: 1rem;
+  }
 }
-a {
-  color: #42b983;
-}
+
+// @media all and (max-device-width : 480px) {
+//   p {
+//     display: none;
+//   }
+// }
 </style>

@@ -45,4 +45,11 @@ img {
   width: 500px;
   height: 500px;
 }
+
+@media all and (max-width : 480px) {
+  img {
+    width: 300px;
+    height: 300px;
+  }
+}
 </style>
