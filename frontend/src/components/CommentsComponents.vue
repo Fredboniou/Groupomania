@@ -26,6 +26,7 @@
             <div class="allCom" v-for="(com, idx) in coms" :key="idx">
                 <div class="seeCom">
                     <div class="userComName">
+                        <img :src="com.userPic" :alt="`${com.prenom} ${com.nom}`" id="profilePic">
                         <router-link :to="`/profile/${com.userId}`" :aria-label="`Voir le profil de ${com.prenom} ${com.nom}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
                     </div>
                     <div class="comContent">
@@ -247,12 +248,24 @@ h3 {
     position: relative;
 }
 .userComName {
+    display: flex;
+    justify-content: flex-start;
     width: 100%;
     border-bottom: 1px solid #fc2e06;
+    margin-top: 5px;
+}
+#profilePic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    margin-bottom: 5px;
 }
 h4 {
     position: absolute;
-    top: 10px;
+    top: 5px;
+    left: 110px;
 }
 .dateCom {
     display: flex;

@@ -60,7 +60,7 @@ exports.updatePost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-    const sql = "SELECT post.id, userId, nom, prenom, content, DATE_FORMAT(post.date, 'le %d %b %Y à %H:%i') AS date, likes, post.image FROM user INNER JOIN post ON user.id = post.userId ORDER BY post.date DESC";
+    const sql = "SELECT post.id, userId, nom, prenom, content, DATE_FORMAT(post.date, 'le %d %b %Y à %H:%i') AS date, likes, post.image AS postPic, user.image AS userPic FROM user INNER JOIN post ON user.id = post.userId ORDER BY post.date DESC";
 
     db.query(sql, function(err, result) {
         if (err) {

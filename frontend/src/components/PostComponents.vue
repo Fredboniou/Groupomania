@@ -13,11 +13,15 @@
             <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
                 <div class="seePost">
                     <div class="userName">
-                        <router-link :to="`/profile/${post.userId}`" id="userName" :aria-label="`Visitez le profil de ${post.prenom} ${post.nom}`"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
+                        
+                            <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic">
+                        
+                            <router-link :to="`/profile/${post.userId}`" id="userName" :aria-label="`Visitez le profil de ${post.prenom} ${post.nom}`"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
+                        
                     </div>
                     <div class="postContent">
                         <p :aria-label="`Le post dit : ${post.content}`">{{ post.content }}</p><br>
-                        <img v-if="post.image != null" :src="post.image" alt="">
+                        <img v-if="post.postPic != null" :src="post.postPic" alt="" id="postPicture">
                     </div>
                     <div class="dateLikes">
                         <div class="postDate">
@@ -69,6 +73,9 @@ export default {
             alert("Veuillez vous identifier pour accéder à cette partie")
             this.$router.push("/")
         }
+    },
+    computed: {
+        
     },
     methods: {
         fullname() {
@@ -123,7 +130,8 @@ export default {
                     console.log(error);
                 })
             }
-         }
+        },
+        
     }
 }
 
@@ -171,12 +179,24 @@ h3 {
     max-width: 600px;
 }
 .userName {
+    display: flex;
+    justify-content: flex-start;
     width: 100%;
     border-bottom: 1px solid #fc2e06;
+    margin-top: 5px;
+}
+#profilePic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    margin-bottom: 5px;
 }
 h4 {
     position: absolute;
-    top: 10px;
+    top: 5px;
+    left: 110px;
 }
 #comments {
     text-decoration: none;
@@ -212,7 +232,7 @@ a {
 .disconnect {
         width: 10%;
 }
-img {
+#postPicture {
     width: 90%;
 }
 </style>

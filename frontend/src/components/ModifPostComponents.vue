@@ -7,7 +7,6 @@
                 <div class="post-container">
                     <label for="content">Créez votre nouvelle publication</label>
                     <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Créez votre nouvelle publication"></textarea>                 
-                    <!-- <textarea name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Créez votre nouvelle publication"></textarea>                  -->
                 </div>
                 <div class="picture-container">
                     <label for="picture" aria-label="Ajoutez une image">Ajoutez une image : </label>
@@ -121,7 +120,7 @@ export default {
                 })
             }
         },
-        previewImage: function(event) {
+        previewImage(event) {
             const self = this;
             let input = event.target;
             if (input.files) {
@@ -134,7 +133,7 @@ export default {
                 console.log(self.form.image.name);
             }
         },
-        deletePic: function() {
+        deletePic() {
             this.form.preview = null;
         }
     }
