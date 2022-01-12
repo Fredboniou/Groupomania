@@ -50,8 +50,12 @@ li {
     text-decoration: none;
     font-weight: bold;
     color: #000;
+    background: linear-gradient(to top, #fc2e06 0%, #fc2e06 2px, transparent 3px) no-repeat;
+    background-size: 0 100%;
+    transition: background-size .3s;
     &:hover {
-      color: #fc2e06
+      //color: #961103
+      background-size: 100% 100%;
     }
   }
 }
@@ -81,9 +85,9 @@ img {
   span {
     display: none;
   }
-  .menu-checkbox:focus + .menu-toggle {
-    outline: #fc2e06 auto 5px;
-  }
+  // .menu-checkbox:focus + .menu-toggle {
+  //   outline: #fc2e06 auto 5px;
+  // }
   .menu-toggle {
     display: initial;
     padding: .5em 1em;

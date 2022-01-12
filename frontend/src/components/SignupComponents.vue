@@ -113,7 +113,7 @@ form{
   width: 50%;
   min-width: 380px;
   max-width: 600px;
-  background: white;
+  background: #ffffff;
   display: grid;
   grid-template-rows: repeat(4, 104px);
   padding: 60px 45px 30px;
@@ -152,7 +152,7 @@ span {
   color: red;
 }
 p {
-  background: red;
+  //background: red;
   width: 33%;
   height: 6px;
   margin: -2px 0 2px;
@@ -206,6 +206,10 @@ button {
   visibility: visible;
 }
 h3 {
+  //margin: auto;
+  // width: 100%;
+  // min-width: 380px;
+  // max-width: 700px;
     border: 1px solid black;
     padding: 20px;
     border-radius: 50px;

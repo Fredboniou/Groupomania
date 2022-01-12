@@ -60,7 +60,7 @@ exports.updatePost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-    const sql = "SELECT post.id, userId, nom, prenom, content, DATE_FORMAT(post.date, 'le %d-%m-%Y à %H:%i') AS date, likes, post.image FROM user INNER JOIN post ON user.id = post.userId ORDER BY post.date DESC";
+    const sql = "SELECT post.id, userId, nom, prenom, content, DATE_FORMAT(post.date, 'le %d %b %Y à %H:%i') AS date, likes, post.image FROM user INNER JOIN post ON user.id = post.userId ORDER BY post.date DESC";
 
     db.query(sql, function(err, result) {
         if (err) {
@@ -71,15 +71,15 @@ exports.getAllPosts = (req, res) => {
     });
 };
 
-// exports.getOnePost = (req, res) => {
-//     const postId = req.params.id;
-//     const sql = "SELECT post.id, nom, prenom, content, date, DATE_FORMAT(date, 'le %d-%m-%Y à %H:%i') AS date, likes FROM user INNER JOIN post ON user.id = post.userId WHERE post.id=?";
-
-//     db.query(sql, [postId], function(err, result) {
-//         if (err) {
-//             console.log(err);
-//             return res.status(400).json({ message: "Impossible d'afficher ce post !" })
-//         }
-//         res.status(200).json({ result })
-//     })
-// }
+exports.getOnePost = (req, res) => {
+    const postId = req.params.id;
+    //const sql = "SELECT post.id, nom, prenom, content, date, DATE_FORMAT(date, 'le %d-%m-%Y à %H:%i') AS date, likes FROM user INNER JOIN post ON user.id = post.userId WHERE post.id=?";
+    const sql = "SELECT content, image FROM post WHERE id=?"
+    db.query(sql, [postId], function(err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(400).json({ message: "Impossible d'afficher ce post !" })
+        }
+        res.status(200).json({ result })
+    })
+}

@@ -7,6 +7,7 @@
                 <div class="post-container">
                     <label for="content">Créez votre nouvelle publication</label>
                     <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Créez votre nouvelle publication"></textarea>                 
+                    <!-- <textarea name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Créez votre nouvelle publication"></textarea>                  -->
                 </div>
                 <div class="picture-container">
                     <label for="picture" aria-label="Ajoutez une image">Ajoutez une image : </label>
@@ -16,6 +17,7 @@
                     </div>
                 </div>
                 <button :disabled="!contentIsValid" aria-label="Valider votre modification">Modifier</button>
+                <button v-if="form.preview != null" @click="deletePic">Supprimer l'image</button>
             </form>
         </div>
     </div>
@@ -38,12 +40,14 @@ export default {
                 content: "",
                 preview: null,
                 image: null,
-            }
+            },
+            post: [],
         }
     },
     mounted() {
         if(localStorage.getItem("form")) {
             try {
+                this.getOnePost();
                 console.log("storage ok");
             } catch(error) {
                 localStorage.removeItem("form");
@@ -60,6 +64,29 @@ export default {
         }
     },
     methods: {
+        getOnePost() {
+            const postId = this.$route.params.id;
+            const data = JSON.parse(localStorage.getItem("form"));
+            const token = data.token;
+            const self = this;
+
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+            axios.get("http://localhost:3000/api/post/" + postId, {
+                headers: {
+                    Authorization: "bearer " + token
+                },
+            })
+            .then(function(response) {
+                self.post = response.data.result;
+                self.form.content = self.post[0].content;
+                self.form.preview = self.post[0].image;
+                console.log(self.post);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+        },
         modifPost() {
             const postIsValid = this.contentIsValid;
 
@@ -107,6 +134,9 @@ export default {
                 console.log(self.form.image.name);
             }
         },
+        deletePic: function() {
+            this.form.preview = null;
+        }
     }
     
 }
