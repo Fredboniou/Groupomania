@@ -1,6 +1,8 @@
 <template>
     <div class="login">
+      <div class="msg">
         <h3 aria-label="Identifiez vous">{{ loginMsg }}</h3>
+      </div>
         <div class="form-container">
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="email-container">
@@ -88,19 +90,23 @@ export default {
 <style lang="scss" scoped>
 .form-container {
     display: flex;
+    margin-top: 20px;
 }
 form{
   margin: auto;
   width: 50%;
-  min-width: 380px;
+  //min-width: 380px;
   max-width: 600px;
-  background: white;
+  background: #ffffff;
   display: grid;
-  grid-template-rows: repeat(4, 104px);
+  grid-template-rows: repeat(3, 104px);
   padding: 60px 45px 30px;
   border-radius: 16px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   position: relative;
+}
+.login {
+  margin-top: 20px;
 }
 div {
   transition: 0.2s;
@@ -121,10 +127,6 @@ input[type="email"] {
   font-size: 1.1rem;
   padding-left: 10px;
   transition: 0.2s;
-
-  &:focus {
-      border: 1px solid #5ef9a4;
-  }
 }
 span {
   margin-bottom: 20px;
@@ -132,15 +134,15 @@ span {
   font-size: 0.8rem;
   color: red;
 }
-p {
-  background: red;
-  width: 33%;
-  height: 6px;
-  margin: -2px 0 2px;
-  border-radius: 50px;
-  visibility: hidden;
-  transition: 0.3s;
-}
+// p {
+//   background: red;
+//   width: 33%;
+//   height: 6px;
+//   margin: -2px 0 2px;
+//   border-radius: 50px;
+//   visibility: hidden;
+//   transition: 0.3s;
+// }
 // #security span {
 //   display: inline;
 // }
@@ -148,7 +150,7 @@ p {
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  width: 50%;
+  //width: 50%;
   height: 50%;
   margin: 12px auto 0;
   padding: 10px;
@@ -172,10 +174,31 @@ button {
   opacity: 1;
   color: red;
 }
-h3 {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// h3 {
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
+.msg {
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
+@media all and (max-width : 760px) {
+  .form-container {
+    width: 100%;
+  }
+}
+@media all and (max-width : 480px) {
+  form {
+    margin: 0;
+    width: 100%;
+  }
+  .msg {
+    width: 100%;
+  }
 }
 </style>

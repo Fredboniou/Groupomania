@@ -146,10 +146,6 @@ input[type="email"] {
   font-size: 1.1rem;
   padding-left: 10px;
   transition: 0.2s;
-
-  &:focus {
-      border: 1px solid #5ef9a4;
-  }
 }
 span {
   margin-bottom: 20px;
