@@ -28,5 +28,8 @@ a {
     color: #fc2e06;
   }
 }
+#nav {
+    text-align: center;
+}
 
 </style>

@@ -26,7 +26,7 @@
             <div class="allCom" v-for="(com, idx) in coms" :key="idx">
                 <div class="seeCom">
                     <div class="userComName">
-                        <img :src="com.userPic" :alt="`${com.prenom} ${com.nom}`" id="profilePic">
+                        <img :src="com.userPic" :alt="`${com.prenom} ${com.nom}`" id="profilePic" v-if="com.userPic != null">
                         <router-link :to="`/profile/${com.userId}`" :aria-label="`Voir le profil de ${com.prenom} ${com.nom}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
                     </div>
                     <div class="comContent">

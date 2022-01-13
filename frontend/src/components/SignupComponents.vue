@@ -1,6 +1,8 @@
 <template>
     <div class="signup">
-        <h3 aria-label="Inscrivez vous">{{ signupMsg }}</h3>
+        <div class="msg">
+          <h3 aria-label="Inscrivez vous">{{ signupMsg }}</h3>
+        </div>
         <div class="form-container">
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="name-container">
@@ -24,7 +26,7 @@
                     <p id="progress-bar" class="progressRed" v-if="(form.password.length >= 1) && (form.password.length < 8)"></p>
                     <p id="progress-bar" class="progressBlue" v-if="(form.password.length >= 8) && (form.password.length < 12)"></p>
                     <p id="progress-bar" class="progressGreen" v-if="form.password.length >= 12"></p>
-                    <span v-if="!passwordIsValid" class="error">Le mot de passe doit contenir au minimum 
+                    <span v-if="!passwordIsValid" class="error error-password">Le mot de passe doit contenir au minimum 
                       <span v-if="form.password.length < 8">8 caractères</span>
                       <span v-if="!((/.*[A-Z]/).test(this.form.password))"> une majuscule</span> 
                       <span v-if="!((/.*\d/).test(this.form.password))"> un chiffre</span> 
@@ -107,11 +109,12 @@ export default {
 <style lang="scss" scoped>
 .form-container {
     display: flex;
+     margin-top: 20px;
 }
-form{
+form {
   margin: auto;
   width: 50%;
-  min-width: 380px;
+  //min-width: 480px;
   max-width: 600px;
   background: #ffffff;
   display: grid;
@@ -120,6 +123,9 @@ form{
   border-radius: 16px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   position: relative;
+}
+.signup {
+  margin-top: 20px;
 }
 div {
   transition: 0.2s;
@@ -167,7 +173,7 @@ p {
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  width: 50%;
+  //width: 50%;
   margin: 12px auto 0;
   padding: 10px;
   border-radius: 150px;
@@ -205,14 +211,61 @@ button {
   background: #5ef9a4;
   visibility: visible;
 }
-h3 {
-  //margin: auto;
-  // width: 100%;
-  // min-width: 380px;
-  // max-width: 700px;
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// h3 {
+//   margin: auto;
+//   width: 100%;
+//    min-width: 530px;
+//   max-width: 700px;
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
+.msg {
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
+@media all and (max-width : 1166px) {
+  .confirm-container {
+    margin-top: 20px;
+  }
+}
+@media all and (max-width : 760px) {
+  .form-container {
+    width: 100%;
+  }
+  // form {
+  //   width: 100%;
+  // }
+  // .msg {
+  //   width: 100%;
+  // }
+
+}
+@media all and (max-width : 646px) {
+  .confirm-container {
+    margin-top: 40px;
+  }
+}
+@media all and (max-width : 480px) {
+  .confirm-container {
+    margin-top: 20px;
+  }
+  form {
+    margin: 0;
+    width: 100%;
+  }
+  .msg {
+  //   margin: 0;
+    width: 100%;
+  }
+}
+@media all and (max-width : 421px) {
+  .confirm-container {
+    margin-top: 40px;
+  }
 }
 </style>

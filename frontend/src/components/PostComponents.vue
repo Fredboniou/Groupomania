@@ -12,12 +12,9 @@
             <h3 aria-label="Page du fil d'actualité">Fil d'actualité</h3>
             <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
                 <div class="seePost">
-                    <div class="userName">
-                        
-                            <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic">
-                        
+                    <div class="userName">                       
+                            <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic" v-if="post.userPic != null">
                             <router-link :to="`/profile/${post.userId}`" id="userName" :aria-label="`Visitez le profil de ${post.prenom} ${post.nom}`"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
-                        
                     </div>
                     <div class="postContent">
                         <p :aria-label="`Le post dit : ${post.content}`">{{ post.content }}</p><br>
@@ -85,7 +82,7 @@ export default {
             return `${firstname} ${name}`
             }
         },
-        async getAllPosts() {
+        getAllPosts() {
             const data = JSON.parse(localStorage.getItem("form"));
             const token = data.token;
             const self = this;
@@ -131,7 +128,6 @@ export default {
                 })
             }
         },
-        
     }
 }
 
