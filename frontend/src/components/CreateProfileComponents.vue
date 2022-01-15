@@ -4,7 +4,9 @@
         <div class="createProfile">
             <h3 aria-label="Créez votre profil">{{ CreateProfileMsg }}</h3>
         </div>
-        <p aria-label="Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau">Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau.</p>
+        <div class="caution">
+            <p aria-label="Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau">Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau.</p>
+        </div>
         <div class="form-container">
             <form name="form" ref="myForm" @submit.prevent="submitForm" autocomplete="off" enctype="multipart/form-data">
                 <div class="city">
@@ -174,13 +176,22 @@ export default {
 .form-container {
     display: flex;
 }
+.createProfile {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
 .picture-container {
     margin-top: 45px;
 }
 form{
   margin: auto;
   width: 50%;
-  min-width: 380px;
+  //min-width: 380px;
   max-width: 600px;
   background: white;
   display: grid;
@@ -264,12 +275,12 @@ a {
         color: #fc2e06;
     }
 }
-h3 {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
-}
+// h3 {
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
 img {
     overflow : hidden;
 	-webkit-border-radius : 50px;
@@ -278,5 +289,20 @@ img {
 	width: 150px;
     height: 150px;
     margin-bottom: 30px;
+}
+@media all and (max-width: 530px) {
+    form {
+        width: 100%;
+        padding: 60px 0 30px;
+    }
+    .createProfile {
+        width: 100%;
+    }
+    input[type="text"] {
+        width: 70%;
+    }
+    textarea {
+        width: 70%;
+    }
 }
 </style>
