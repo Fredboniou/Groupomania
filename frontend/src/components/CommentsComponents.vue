@@ -16,6 +16,7 @@
                     </div> 
                 </div>
                 <button :disabled="!contentIsValid" aria-label="Publier" class="publication">Publier</button>
+                <button v-if="form.preview != null && form.image != null" @click="deletePic" class="deletePic">Supprimer l'image</button>
             </form>
         </div>
         <div class="noCom" v-if="this.coms == ''">
@@ -29,6 +30,7 @@
                 <div class="seeCom">
                     <div class="userComName">
                         <img :src="com.userPic" :alt="`${com.prenom} ${com.nom}`" id="profilePic" v-if="com.userPic != null">
+                        <div class="replaceAvatar" v-else><span class="initials">{{ replaceAvatar(com.prenom, com.nom) }}</span></div>
                         <router-link :to="`/profile/${com.userId}`" :aria-label="`Voir le profil de ${com.prenom} ${com.nom}`" id="userName"><h4>{{ com.prenom }} {{ com.nom }}</h4></router-link>
                     </div>
                     <div class="comContent">
@@ -151,7 +153,7 @@ export default {
                 console.log(error);
             })
         },
-        previewImage: function(event) {
+        previewImage(event) {
             const self = this;
             let input = event.target;
             if (input.files) {
@@ -184,7 +186,16 @@ export default {
                     console.log(error);
                 })
             }
-        }
+        },
+        deletePic() {
+            this.form.preview = null;
+            this.form.image = null;
+        },
+        replaceAvatar(firstname, name) {
+            const initFirstName = firstname.substring(0, 1).toUpperCase();
+            const initName = name.substring(0, 1).toUpperCase();
+            return `${initFirstName}-${initName}`
+        },
     }
 }
 </script>
@@ -204,7 +215,7 @@ textarea {
   padding-left: 10px;
   transition: 0.2s;
 }
-.publication {
+.publication, .deletePic {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   //width: 25%;
@@ -238,6 +249,22 @@ textarea {
     border: 1px solid #000000;
     border-radius: 50px;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+}
+.replaceAvatar {
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    margin-bottom: 5px;
+    background: #000000;
+}
+.initials {
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    font-size: 1.5rem;
 }
 .modifDel {
    border: none;

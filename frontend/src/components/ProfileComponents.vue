@@ -198,7 +198,7 @@ button {
         margin-bottom: 10px;
     }
     button {
-        margin-bottom: 5px;
+        margin-top: 5px;
     }
 }
 </style>
