@@ -290,7 +290,7 @@ img {
     height: 150px;
     margin-bottom: 30px;
 }
-@media all and (max-width: 530px) {
+@media all and (max-width : 536px) {
     form {
         width: 100%;
         padding: 60px 0 30px;

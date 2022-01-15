@@ -22,6 +22,7 @@
                 <div class="seePost">
                     <div class="userName">                       
                             <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic" v-if="post.userPic != null">
+                            <div class="replaceAvatar" v-else><span class="initials">{{ replaceAvatar(post.prenom, post.nom) }}</span></div>
                             <router-link :to="`/profile/${post.userId}`" id="userName" :aria-label="`Visitez le profil de ${post.prenom} ${post.nom}`"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
                     </div>
                     <div class="postContent">
@@ -136,6 +137,11 @@ export default {
                 })
             }
         },
+        replaceAvatar(firstname, name) {
+            const initFirstName = firstname.substring(0, 1).toUpperCase();
+            const initName = name.substring(0, 1).toUpperCase();
+            return `${initFirstName}-${initName}`
+        },
     }
 }
 </script>
@@ -225,6 +231,22 @@ export default {
     top: 10px;
     margin-bottom: 5px;
 }
+.replaceAvatar {
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    margin-bottom: 5px;
+    background: #000000;
+}
+.initials {
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    font-size: 1.5rem;
+}
 h4 {
     position: absolute;
     top: 5px;
@@ -271,6 +293,9 @@ a {
     span {
         display: none;
     }
+    .initials {
+        display: initial;
+    }
     .createProfile {
         display: initial;
     }
@@ -306,6 +331,23 @@ a {
     }
     .user {
         display: none;
+    }
+}
+@media all and (max-width : 480px) {
+    #profilePic, .replaceAvatar {
+        display: none;
+    }
+    .userName {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    border-bottom: 1px solid #fc2e06;
+    margin-top: 5px;
+    }
+    h4 {
+        position: absolute;
+        top: 5px;
+        left: 50px;
     }
 }
 </style>

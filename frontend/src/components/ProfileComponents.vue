@@ -3,26 +3,26 @@
         <div class="header">
             <router-link to="/posts" aria-label="Revenir au fil d'actualité">Revenir au fil d'actualité</router-link>
         </div>
+        <div class="profileName">
+            <h3 :aria-label="`Vous visitez le profil de ${profile.prenom} ${profile.nom}`">{{ profile.prenom }} {{profile.nom }}</h3>
+        </div>
         <div class="profile">
-            <div class="profileName">
-                <h3 :aria-label="`Vous visitez le profil de ${profile.prenom} ${profile.nom}`">Vous visitez le profil de {{ profile.prenom }} {{profile.nom }}</h3>
-            </div>
             <div class="profileMail">
-                <p><span class="description" aria-label="Adresse mail de contact">E-mail de contact</span> : <a :href="`mailto:#`" :aria-label="`${profile.email}`">{{ profile.email }}</a></p>
+                <p><span class="description" aria-label="Adresse mail de contact">E-mail de contact</span><span class="points"> : </span><a :href="`mailto:#`" :aria-label="`${profile.email}`">{{ profile.email }}</a></p>
             </div>
             <div class="profileBirthday">
-                <p><span class="description" aria-label="Date de naissance">Date de naissance</span> : <span v-if="profile.date_naissance==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.date_naissance}`">{{ profile.date_naissance }}</span></p>
+                <p><span class="description" aria-label="Date de naissance">Date de naissance</span><span class="points"> : </span><span v-if="profile.date_naissance==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.date_naissance}`">{{ profile.date_naissance }}</span></p>
             </div>
             <div class="profileBio">
-                <p><span class="description" aria-label="Bio">Bio</span> : <span v-if="profile.bio==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.bio}`">{{ profile.bio }}</span></p>
+                <p><span class="description" aria-label="Bio">Bio</span><span class="points"> : </span><span v-if="profile.bio==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.bio}`">{{ profile.bio }}</span></p>
             </div>
             <div class="profileCity">
-                <p><span class="description" aria-label="Lieu de résidence">Lieu de résidence</span> : <span v-if="profile.ville==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ville}`">{{ profile.ville }}</span></p>
+                <p><span class="description" aria-label="Lieu de résidence">Lieu de résidence</span><span class="points"> : </span><span v-if="profile.ville==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ville}`">{{ profile.ville }}</span></p>
             </div>
             <div class="profileSchool">
-                <p><span class="description" aria-label="Dernière école fréquentée">Dernière école fréquentée</span> : <span v-if="profile.ecole==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ecole}`">{{ profile.ecole }}</span></p>
+                <p><span class="description" aria-label="Dernière école fréquentée">Dernière école fréquentée</span><span class="points"> : </span><span v-if="profile.ecole==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ecole}`">{{ profile.ecole }}</span></p>
             </div>
-            <div class="profilePicture">
+            <div class="profilePicture" v-if="profile.image != null">
                 <img :src="profile.image" />
             </div>
             <div class="ownerOptions" v-if="this.userId==this.$route.params.id || this.admin==1" >
@@ -126,9 +126,9 @@ a {
 }
 .profile {
     margin: 30px auto;
-    height: auto;
+    //height: auto;
     width: 50%;
-    min-width: 380px;
+    //min-width: 380px;
     max-width: 600px;
     background: white;       
     padding: 60px 45px 30px;
@@ -137,6 +137,10 @@ a {
     position: relative;
 }
 .profileName {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
     border: 1px solid black;
     padding: 0px;
     border-radius: 50px;
@@ -154,5 +158,24 @@ img {
 	width: 150px;
     height: 150px;
     margin-bottom: 30px;
+}
+@media all and (max-width : 536px) {
+    .profile {
+        width: 100%;
+        padding: 60px 0 30px;
+    }
+    .profileName {
+        width: 100%;
+    }
+    p {
+        display: flex;
+        flex-direction: column;
+    }
+    .points {
+        display: none;
+    }
+    .description {
+        margin-bottom: 10px;
+    }
 }
 </style>

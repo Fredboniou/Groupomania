@@ -18,6 +18,7 @@
                     </div>
                 </div>
                 <button :disabled="!contentIsValid" aria-label="Valider votre publication">Publier</button>
+                <button v-if="form.preview != null" @click="deletePic">Supprimer l'image</button>
             </form>
         </div>
     </div>
@@ -70,7 +71,7 @@ export default {
                 const token = data.token;
                 const userId = this.form.userId;
                 const content = this.form.content;
-                const url = this.form.image.name;
+                //const url = this.form.image.name;
                 const image = this.form.image;
                 //const infos = {userId, content};
                 const self = this;
@@ -78,7 +79,7 @@ export default {
                 let formData = new FormData();
                 formData.append("userId", userId);
                 formData.append("content", content);
-                formData.append("url", url);
+                //formData.append("url", url);
                 formData.append("image", image);
                 console.log(formData);
 
@@ -99,7 +100,7 @@ export default {
                 })
             }
         },
-        previewImage: function(event) {
+        previewImage(event) {
             const self = this;
             let input = event.target;
             if (input.files) {
@@ -112,6 +113,9 @@ export default {
                 console.log(self.form.image.name);
             }
         },
+        deletePic() {
+            this.form.preview = null;
+        }
     }
     
 }
@@ -160,10 +164,10 @@ button {
   width: 50%;
   //height: 50%;
   //margin: 12px auto 0;
-  margin: 100px auto 0;
+  margin: 10px auto 0;
   padding: 10px;
   border-radius: 150px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: 0.3s ease;

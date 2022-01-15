@@ -1,7 +1,9 @@
 <template>
     <div class="newPost">
         <router-link to="/posts" aria-label="Annuler la modification">Annuler la modification</router-link>
-        <h3 aria-label="Modifiez votre publication">{{ ModifMsg }}</h3>
+        <div class="msg">
+            <h3 aria-label="Modifiez votre publication">{{ ModifMsg }}</h3>
+        </div>
         <div class="form-container">
             <form @submit.prevent="modifPost" autocomplete="off">
                 <div class="post-container">
@@ -150,11 +152,11 @@ export default {
 form{
   margin: auto;
   width: 50%;
-  min-width: 380px;
+  //min-width: 380px;
   max-width: 600px;
   background: white;
   display: grid;
-  grid-template-rows: repeat(4, 104px);
+  grid-template-rows: repeat(4, 104px, 104px, auto, 104px);
   padding: 60px 45px 30px;
   border-radius: 16px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
@@ -186,12 +188,12 @@ button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   width: 50%;
-  height: 50%;
+  //height: 50%;
   //margin: 12px auto 0;
-  margin: 100px auto 0;
+  margin: 10px auto 0;
   padding: 10px;
   border-radius: 150px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: 0.3s ease;
@@ -218,13 +220,37 @@ a {
         color: #fc2e06;
     }
 }
-h3 {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// h3 {
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
+.msg{
+   margin: auto;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   width: 80%;
+   border: 1px solid #000000;
+   border-radius: 50px;
+   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .picture-container {
     margin-top: 50px;
+}
+img {
+    width: 100%;
+}
+@media all and (max-width : 536px) {
+    form {
+        width: 100%;
+        padding : 60px 0 30px;
+    }
+    .msg {
+        width: 100%;
+    }
+    textarea {
+        width: 70%;
+    }
 }
 </style>
