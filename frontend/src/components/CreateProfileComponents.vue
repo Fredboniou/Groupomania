@@ -2,37 +2,37 @@
     <div class="editProfile">
         <router-link to="/posts">Revenir au fil d'actualité</router-link>
         <div class="createProfile">
-            <h3 aria-label="Créez votre profil">{{ CreateProfileMsg }}</h3>
+            <h3>{{ CreateProfileMsg }}</h3>
         </div>
         <div class="caution">
-            <p aria-label="Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau">Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau.</p>
+            <p>Attention, en cas de modification de profil, tous les champs du formulaire sont à renseigner de nouveau.</p>
         </div>
         <div class="form-container">
             <form name="form" ref="myForm" @submit.prevent="submitForm" autocomplete="off" enctype="multipart/form-data">
                 <div class="city">
                     <label for="city">Lieu de résidence</label>
-                    <input type="text" v-model="form.city" name="city" id="city" autocomplete="off" aria-label="Renseignez votre lieu de résidence">
+                    <input type="text" v-model="form.city" name="city" id="city" autocomplete="off">
                 </div>
                 <div class="school">
                     <label for="school">Ou avez-vous étudié</label>
-                    <input type="text" v-model="form.school" name="school" id="school" autocomplete="off" aria-label="Ou avez vous étudié"> 
+                    <input type="text" v-model="form.school" name="school" id="school" autocomplete="off"> 
                 </div>
                 <div class="birthday-container">
                     <label for="birthday">Renseignez votre date de naissance</label>
-                    <input type="date" v-model="form.userBirthday" name="birthday" id="birthday" min="1955-01-01" :max="dayDate" aria-label="Renseignez votre date de naissance">
+                    <input type="date" v-model="form.userBirthday" name="birthday" id="birthday" min="1955-01-01" :max="dayDate">
                 </div>
                 <div class="bio-container">
                     <label for="bio">Dites en plus sur vous</label>
-                    <textarea name="bio" v-model="form.userBio" id="bio" maxlength="300" autocomplete="off" aria-label="Dites en plus sur vous"></textarea>
+                    <textarea name="bio" v-model="form.userBio" id="bio" maxlength="300" autocomplete="off"></textarea>
                 </div>
                 <div class="picture-container">
-                    <label for="picture" aria-label="Ajoutez une photo de profil">Choisissez une photo de profil : </label>
+                    <label for="picture">Choisissez une photo de profil : </label>
                     <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
                     <div id="preview">
                         <img v-if="preview" :src="preview" />
                     </div>
                 </div>
-                <button aria-label="Valider le profil">Valider le profil</button>
+                <button>Valider le profil</button>
             </form>
         </div>
     </div>

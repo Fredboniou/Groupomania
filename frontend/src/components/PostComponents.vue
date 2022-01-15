@@ -7,26 +7,26 @@
                 <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile">{{ fullname() }}</router-link></div>
                 <div class="createProfile"><router-Link to="/createProfile">Modifier mon profil</router-Link></div>
                 <div class="userResp"><router-link to="/createprofile">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
-                <div class="newPost"><router-link to="/newpost" aria-label="Créez une publication">Créer une publication</router-link></div><span class="separateUserChoice"> | </span>
-                <button class="disconnect" @click="disconnect" aria-label="Déconnectez vous">Déconnexion</button>
+                <div class="newPost"><router-link to="/newpost">Créer une publication</router-link></div><span class="separateUserChoice"> | </span>
+                <button class="disconnect" @click="disconnect">Déconnexion</button>
             </div>
         </div>
         <div class="noPost" v-if="this.posts == ''">
-            <h1 aria-label="Aucun post à afficher">Aucun post à afficher</h1>
+            <h1>Aucun post à afficher</h1>
         </div>
         <div class="post" v-else>
             <div class="msg">
-                <h3 aria-label="Page du fil d'actualité">Fil d'actualité</h3>
+                <h3>Fil d'actualité</h3>
             </div>
             <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
                 <div class="seePost">
                     <div class="userName">                       
-                            <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic" v-if="post.userPic != null">
+                            <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic" v-if="post.userPic != null" :aria-label="`photo de profil de ${post.prenom} ${post.nom}`">
                             <div class="replaceAvatar" v-else><span class="initials">{{ replaceAvatar(post.prenom, post.nom) }}</span></div>
                             <router-link :to="`/profile/${post.userId}`" id="userName" :aria-label="`Visitez le profil de ${post.prenom} ${post.nom}`"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
                     </div>
                     <div class="postContent">
-                        <p :aria-label="`Le post dit : ${post.content}`">{{ post.content }}</p><br>
+                        <p>{{ post.content }}</p><br>
                         <img v-if="post.postPic != null" :src="post.postPic" alt="" id="postPicture">
                     </div>
                     <div class="dateLikes">
@@ -38,11 +38,11 @@
                         </div> -->
                     </div>
                     <div class="comments">
-                        <router-link :to="`/post/${post.id}`" aria-label="Voir ou laisser un commentaire" id="comments">Voir/laisser un commentaire</router-link>
+                        <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
                     </div>
                     <div class="ownerOptions" v-if="userId==post.userId || admin==1">
-                        <router-link :to="`/modifpost/${post.id}`" v-if="userId==post.userId"><button class="modifDel" aria-label="Modifiez votre post">Modifier</button></router-link>
-                        <button class="modifDel" @click="deletePost(post.id)" aria-label="Supprimez votre post">Supprimer</button>
+                        <router-link :to="`/modifpost/${post.id}`" v-if="userId==post.userId"><button class="modifDel">Modifier</button></router-link>
+                        <button class="modifDel" @click="deletePost(post.id)">Supprimer</button>
                     </div>
                 </div>
                 <div class="separate"></div>

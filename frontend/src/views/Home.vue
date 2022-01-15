@@ -4,10 +4,10 @@
       <input type="checkbox" id="menu-checkbox" class="menu-checkbox" />
       <label for="menu-checkbox" class="menu-toggle">&equiv; Menu</label>
       <ul class="menu">
-        <li><router-link to="/" aria-label="Page d'accueil">Home</router-link></li><span> | </span>
-        <li><router-link to="/about" aria-label="A propos de notre société">About</router-link></li><span> | </span>
-        <li><router-link to="/login" aria-label="Accès membre">Accès membre</router-link></li><span> | </span>
-        <li><router-link to="/signup" aria-label="Créer un compte">Créer un compte</router-link></li>
+        <li><router-link to="/">Home</router-link></li><span> | </span>
+        <li><router-link to="/about">About</router-link></li><span> | </span>
+        <li><router-link to="/login">Accès membre</router-link></li><span> | </span>
+        <li><router-link to="/signup">Créer un compte</router-link></li>
       </ul>
     </div>
     <img alt="logo" src="../assets/icone-black-rs.png">

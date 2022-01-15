@@ -2,7 +2,7 @@
     <div class="newPost">
         <router-link to="/posts">Revenir au fil d'actualité</router-link>
         <div class="msg">
-            <h3 aria-label="Créez votre publication">{{ NewPostMsg }}</h3>
+            <h3>{{ NewPostMsg }}</h3>
         </div>
         <div class="form-container">
             <form @submit.prevent="createPost" autocomplete="off">
@@ -12,12 +12,12 @@
                 </div>
                 <div class="picture-container">
                     <label for="picture">Ajoutez une image pour illustrer votre post : </label>
-                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image" aria-label="Vous pouvez ajouter une image">
+                    <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
                     <div id="preview">
                         <img v-if="form.preview" :src="form.preview" />
                     </div>
                 </div>
-                <button :disabled="!contentIsValid" aria-label="Valider votre publication">Publier</button>
+                <button :disabled="!contentIsValid">Publier</button>
                 <button v-if="form.preview != null" @click="deletePic">Supprimer l'image</button>
             </form>
         </div>
