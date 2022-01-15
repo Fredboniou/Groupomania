@@ -15,14 +15,16 @@
                         <img v-if="form.preview" :src="form.preview" />
                     </div> 
                 </div>
-                <button :disabled="!contentIsValid" aria-label="Publier">Publier</button>
+                <button :disabled="!contentIsValid" aria-label="Publier" class="publication">Publier</button>
             </form>
         </div>
         <div class="noCom" v-if="this.coms == ''">
             <h1 aria-label="Aucun commentaire pour le moment">Aucun commentaire pour le moment</h1>
         </div>
         <div class="displayCom" v-else>
-            <h3 aria-label="page des commentaires">{{ ComMsg }}</h3>
+            <div class="msg">
+                <h3 aria-label="page des commentaires">{{ ComMsg }}</h3>
+            </div>
             <div class="allCom" v-for="(com, idx) in coms" :key="idx">
                 <div class="seeCom">
                     <div class="userComName">
@@ -202,14 +204,14 @@ textarea {
   padding-left: 10px;
   transition: 0.2s;
 }
-button {
+.publication {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  width: 25%;
-  height: 50%;
-  //margin: 12px auto 0;
+  //width: 25%;
+  //height: 50%;
+  margin: 12px auto 0;
   margin: 10px auto;
-  padding: 10px;
+  padding: 2px;
   border-radius: 150px;
   font-size: 1.2rem;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
@@ -229,17 +231,44 @@ button {
       cursor: default;
   }
 }
-h3 {
-    border: 1px solid black;
-    padding: 20px;
+.msg {
+    margin: auto;
+    margin-top: 20px;
+    width: 80%;
+    border: 1px solid #000000;
     border-radius: 50px;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
+.modifDel {
+   border: none;
+  background: linear-gradient(65deg, #f89e8c, #fc2e06);
+  //width: 25%;
+  //height: 50%;
+  margin: 12px auto 0;
+  margin: 10px auto;
+  padding: 2px;
+  border-radius: 150px;
+  font-size: 1rem;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+      filter: brightness(105%);
+      transform: translateX(2px);
+  } 
+}
+// h3 {
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
 .seeCom {
     margin: 30px auto;
     height: auto;
     width: 50%;
-    min-width: 380px;
+    //min-width: 380px;
     max-width: 600px;
     background: white;       
     padding: 60px 45px 30px;

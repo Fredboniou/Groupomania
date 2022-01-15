@@ -185,9 +185,9 @@ export default {
 // #fa-user-mobile {
 //     display: none;
 // }
-#fa-user-screen {
-    display: none;
-}
+// #fa-user-screen {
+//     display: none;
+// }
 // h3 {
 //     border: 1px solid black;
 //     padding: 20px;
@@ -200,7 +200,7 @@ export default {
    width: 80%;
    border: 1px solid #000000;
    border-radius: 50px;
-   background: linear-gradient(65deg, #f89e8c, #fc2e06) 
+   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .separate {
     margin: auto;
@@ -308,5 +308,4 @@ a {
         display: none;
     }
 }
-//@media all and ()
 </style>

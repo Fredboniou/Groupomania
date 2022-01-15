@@ -1,12 +1,14 @@
 <template>
     <div class="newPost">
         <router-link to="/posts">Revenir au fil d'actualité</router-link>
-        <h3 aria-label="Créez votre publication">{{ NewPostMsg }}</h3>
+        <div class="msg">
+            <h3 aria-label="Créez votre publication">{{ NewPostMsg }}</h3>
+        </div>
         <div class="form-container">
             <form @submit.prevent="createPost" autocomplete="off">
                 <div class="post-container">
-                    <label for="content">Votre publication</label>
-                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" required aria-required="true" aria-label="Votre publication"></textarea>                 
+                    <!--<label for="content">Votre publication</label>-->
+                    <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" placeholder="Votre publication..." required aria-required="true" aria-label="Votre publication"></textarea>                 
                 </div>
                 <div class="picture-container">
                     <label for="picture">Ajoutez une image pour illustrer votre post : </label>
@@ -121,10 +123,10 @@ export default {
 .form-container {
     display: flex;
 }
-form{
+form {
   margin: auto;
   width: 50%;
-  min-width: 380px;
+  //min-width: 380px;
   max-width: 600px;
   background: white;
   display: grid;
@@ -145,16 +147,12 @@ textarea {
   border: 1px solid transparent;
   background: rgb(235, 244, 242);
   height: 100%;
-  width: 100%;
+  width: 80%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 9px;
   font-size: 1.1rem;
-  padding-left: 10px;
+  //padding-left: 10px;
   transition: 0.2s;
-
-  &:focus {
-      border: 1px solid #5ef9a4;
-  }
 }
 button {
   border: none;
@@ -192,13 +190,31 @@ a {
         color: #fc2e06;
     }
 }
-h3 {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// h3 {
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
+.msg{
+   margin: auto;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   width: 80%;
+   border: 1px solid #000000;
+   border-radius: 50px;
+   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .picture-container {
     margin-top: 50px;
+}
+@media all and (max-width : 530px) {
+    form {
+        width: 100%;
+        padding: 60px 0 30px;
+    }
+    .msg {
+        width: 100%;
+    }
 }
 </style>
