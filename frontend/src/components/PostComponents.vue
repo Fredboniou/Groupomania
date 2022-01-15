@@ -349,5 +349,8 @@ a {
         top: 5px;
         left: 50px;
     }
+    .modifDel {
+        margin-top: 5px;
+    }
 }
 </style>

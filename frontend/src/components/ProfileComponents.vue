@@ -26,7 +26,7 @@
                 <img :src="profile.image" />
             </div>
             <div class="ownerOptions" v-if="this.userId==this.$route.params.id || this.admin==1" >
-                <router-link to="/createProfile" v-if="this.userId==this.$route.params.id" aria-label="Modifier le profil">Modifier le profil</router-link>
+                <router-link to="/createProfile" v-if="this.userId==this.$route.params.id" aria-label="Modifier le profil"><button>Modifier le profil</button></router-link>
                 <button @click="deleteProfile" aria-label="Supprimer le profil">Supprimer le profil</button>
             </div>
         </div>
@@ -159,6 +159,26 @@ img {
     height: 150px;
     margin-bottom: 30px;
 }
+button {
+  border: none;
+  background: linear-gradient(65deg, #f89e8c, #fc2e06);
+  //width: 50%;
+  //height: 50%;
+  //margin: 12px auto 0;
+  //margin: 10px auto 0;
+  margin-left: 10px;
+  padding: 2px;
+  border-radius: 150px;
+  font-size: 1rem;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+      filter: brightness(105%);
+      transform: translateX(2px);
+  }
+}
 @media all and (max-width : 536px) {
     .profile {
         width: 100%;
@@ -176,6 +196,9 @@ img {
     }
     .description {
         margin-bottom: 10px;
+    }
+    button {
+        margin-bottom: 5px;
     }
 }
 </style>
