@@ -130,7 +130,7 @@ form {
   max-width: 600px;
   background: white;
   display: grid;
-  grid-template-rows: repeat(4, 104px);
+  grid-template-rows: repeat(4, 104px, 104px, auto, 104px);
   padding: 60px 45px 30px;
   border-radius: 16px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
@@ -158,7 +158,7 @@ button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   width: 50%;
-  height: 50%;
+  //height: 50%;
   //margin: 12px auto 0;
   margin: 100px auto 0;
   padding: 10px;
@@ -207,6 +207,9 @@ a {
 }
 .picture-container {
     margin-top: 50px;
+}
+img {
+    width: 100%;
 }
 @media all and (max-width : 530px) {
     form {
