@@ -1,15 +1,23 @@
 <template>
     <div class="wall">
         <div class="head">
-            <div class="user">Vous êtes connecté(e) en tant que<router-link to="/createprofile">{{ fullname() }}</router-link></div> | 
-            <div class="newPost"><router-link to="/newpost" aria-label="Créez une publication">Créer une publication</router-link></div>|
-            <button class="disconnect" @click="disconnect" aria-label="Déconnectez vous">Se déconnecter</button>
+            <input type="checkbox" id="menu-checkbox" class="menu-checkbox" />
+            <label for="menu-checkbox" class="menu-toggle"><i class="fas fa-user" id="fa-user-mobile"></i> {{ fullname() }}</label>
+            <div class="userChoice">
+                <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile">{{ fullname() }}</router-link></div>
+                <div class="createProfile"><router-Link to="/createProfile">Modifier mon profil</router-Link></div>
+                <div class="userResp"><router-link to="/createprofile">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
+                <div class="newPost"><router-link to="/newpost" aria-label="Créez une publication">Créer une publication</router-link></div><span class="separateUserChoice"> | </span>
+                <button class="disconnect" @click="disconnect" aria-label="Déconnectez vous">Déconnexion</button>
+            </div>
         </div>
         <div class="noPost" v-if="this.posts == ''">
             <h1 aria-label="Aucun post à afficher">Aucun post à afficher</h1>
         </div>
         <div class="post" v-else>
-            <h3 aria-label="Page du fil d'actualité">Fil d'actualité</h3>
+            <div class="msg">
+                <h3 aria-label="Page du fil d'actualité">Fil d'actualité</h3>
+            </div>
             <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
                 <div class="seePost">
                     <div class="userName">                       
@@ -24,9 +32,9 @@
                         <div class="postDate">
                             <p>posté {{ post.date }}</p>
                         </div>
-                        <div class="postLikes">
+                        <!-- <div class="postLikes">
                             <p><i class="fas fa-thumbs-up"></i> {{ post.likes }}</p>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="comments">
                         <router-link :to="`/post/${post.id}`" aria-label="Voir ou laisser un commentaire" id="comments">Voir/laisser un commentaire</router-link>
@@ -130,19 +138,17 @@ export default {
         },
     }
 }
-
 </script>
 
 
 
 <style lang="scss" scoped>
-div {
     //.post, .noPost 
     .seePost {
         margin: 30px auto;
         height: auto;
         width: 50%;
-        min-width: 380px;
+        //min-width: 380px;
         max-width: 600px;
         background: white;       
         padding: 60px 45px 30px;
@@ -150,21 +156,51 @@ div {
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         position: relative;
     }
-    .head {
+    .userChoice {
         display: flex;
         justify-content: center;
+    }
+    // .head {
+    //     display: flex;
+    //     justify-content: center;
+    // }
+    .createProfile {
+        display: none;
     }
     .dateLikes {
         display: flex;
         justify-content: space-around;
         border-top: 1px solid #fc2e06;
     }
+    .userResp {
+        display: none;
+    }
+
+.menu-checkbox {
+    display: none;
 }
-h3 {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
+.menu-toggle {
+    display: none;
+}
+// #fa-user-mobile {
+//     display: none;
+// }
+#fa-user-screen {
+    display: none;
+}
+// h3 {
+//     border: 1px solid black;
+//     padding: 20px;
+//     border-radius: 50px;
+//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
+.msg{
+   margin: auto;
+   margin-top: 20px;
+   width: 80%;
+   border: 1px solid #000000;
+   border-radius: 50px;
+   background: linear-gradient(65deg, #f89e8c, #fc2e06) 
 }
 .separate {
     margin: auto;
@@ -212,7 +248,7 @@ a {
     margin-left: 10px;
     border: none;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-    height: 10%;
+    //height: 10%;
     padding: 2px;
     border-radius: 150px;
     font-size: 1rem;
@@ -225,10 +261,52 @@ a {
       transform: translateX(2px);
     }
 }
-.disconnect {
-        width: 10%;
-}
 #postPicture {
     width: 90%;
 }
+@media all and (max-width : 700px) {
+    .infoToUser {
+        display: none;
+    }
+    span {
+        display: none;
+    }
+    .createProfile {
+        display: initial;
+    }
+    // .infoToUser {
+    //     display: initial;
+    // }
+    .menu-checkbox {
+        display: initial;
+        opacity: 0;
+        position: absolute;
+        top: -1000px;
+    }
+    .userChoice {
+            display: none
+        }
+    .menu-checkbox:checked ~ .userChoice {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .separateUserChoice {
+        display: none;
+    }
+    .menu-toggle {
+        display: initial;
+        padding: .5em 1em;
+        font-weight: bold;
+    }
+    .head {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .user {
+        display: none;
+    }
+}
+//@media all and ()
 </style>
