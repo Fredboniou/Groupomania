@@ -114,7 +114,8 @@ export default {
                 const school = this.form.school;
                 const birthday = this.form.userBirthday;
                 const bio = this.form.userBio;
-                const url = this.image.name;
+                //const url = this.image.name;
+                const image = this.image;
                 //const infos = {userId, city, school, birthday, bio, url};
                 console.log(this.image);
                 
@@ -124,8 +125,8 @@ export default {
                 formData.append("school", school);
                 formData.append("birthday", birthday);
                 formData.append("bio", bio);
-                formData.append("url", url);
-                formData.append("image", this.image);
+                //formData.append("url", url);
+                formData.append("image", image);
                 console.log(formData);
 
                 if (confirm("Voulez vous valider votre profil")) {

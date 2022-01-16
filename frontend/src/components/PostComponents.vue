@@ -243,9 +243,9 @@ export default {
 }
 .initials {
     position: absolute;
-    left: 7px;
-    top: 12px;
-    font-size: 1.5rem;
+    left: 10px;
+    top: 18px;
+    font-size: 1rem;
 }
 h4 {
     position: absolute;
