@@ -264,7 +264,7 @@ textarea {
 .initials {
     position: absolute;
     left: 7px;
-    top: 12px;
+    top: 4px;
     font-size: 1.5rem;
 }
 .modifDel {
@@ -321,7 +321,7 @@ textarea {
 }
 h4 {
     position: absolute;
-    top: 5px;
+    top: 0px;
     left: 110px;
 }
 .dateCom {
@@ -348,5 +348,25 @@ a {
 }
 img {
     width: 90%;
+}
+@media all and (max-width : 480px) {
+    #profilePic, .replaceAvatar {
+        display: none;
+    }
+    .userName {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    border-bottom: 1px solid #fc2e06;
+    margin-top: 5px;
+    }
+    h4 {
+        position: absolute;
+        top: 5px;
+        left: 50px;
+    }
+    .modifDel {
+        margin-top: 5px;
+    }
 }
 </style>

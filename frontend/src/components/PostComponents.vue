@@ -245,12 +245,12 @@ export default {
 .initials {
     position: absolute;
     left: 10px;
-    top: 18px;
+    top: 12px;
     font-size: 1rem;
 }
 h4 {
     position: absolute;
-    top: 5px;
+    top: 0px;
     left: 110px;
 }
 #comments {

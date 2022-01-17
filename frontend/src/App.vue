@@ -6,7 +6,7 @@
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Sriracha', Arial, cursive, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -16,6 +16,9 @@
 
 body {
   background-color: #b9b9b9;
+}
+button {
+  font-family: 'Sriracha', cursive;
 }
 // #nav {
 //   padding: 30px;
