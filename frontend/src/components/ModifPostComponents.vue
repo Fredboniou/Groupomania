@@ -227,7 +227,8 @@ a {
 //     border-radius: 50px;
 //     background: linear-gradient(65deg, #f89e8c, #fc2e06);
 // }
-.msg{
+.msg {
+   font-family: 'Amaranth', sans-serif;
    margin: auto;
    margin-top: 20px;
    margin-bottom: 20px;

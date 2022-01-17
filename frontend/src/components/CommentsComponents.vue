@@ -243,6 +243,7 @@ textarea {
   }
 }
 .msg {
+    font-family: 'Amaranth', sans-serif;
     margin: auto;
     margin-top: 20px;
     width: 80%;

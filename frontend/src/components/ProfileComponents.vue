@@ -137,6 +137,7 @@ a {
     position: relative;
 }
 .profileName {
+    font-family: 'Amaranth', sans-serif;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;

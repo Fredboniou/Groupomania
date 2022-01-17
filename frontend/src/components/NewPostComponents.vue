@@ -201,6 +201,7 @@ a {
 //     background: linear-gradient(65deg, #f89e8c, #fc2e06);
 // }
 .msg{
+   font-family: 'Amaranth', sans-serif;
    margin: auto;
    margin-top: 20px;
    margin-bottom: 20px;

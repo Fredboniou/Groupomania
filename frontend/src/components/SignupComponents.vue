@@ -218,6 +218,7 @@ button {
 //     background: linear-gradient(65deg, #f89e8c, #fc2e06);
 // }
 .msg {
+  font-family: 'Amaranth', sans-serif;
   margin: 0 auto;
   width: 80%;
   border: 1px solid #000000;

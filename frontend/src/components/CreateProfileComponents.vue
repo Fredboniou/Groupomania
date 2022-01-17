@@ -178,6 +178,7 @@ export default {
     display: flex;
 }
 .createProfile {
+    font-family: 'Amaranth', sans-serif;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
