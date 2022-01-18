@@ -203,9 +203,9 @@ button {
   border-radius: 50px;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
-@media all and (max-width : 1166px) {
+@media all and (max-width : 1155px) {
   .confirm-container {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 }
 @media all and (max-width : 760px) {
@@ -213,14 +213,14 @@ button {
     width: 100%;
   }
 }
-@media all and (max-width : 646px) {
+@media all and (max-width : 634px) {
   .confirm-container {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 }
 @media all and (max-width : 480px) {
   .confirm-container {
-    margin-top: 20px;
+    margin-top: 30px;
   }
   form {
     margin: 0;
@@ -230,9 +230,26 @@ button {
     width: 100%;
   }
 }
-@media all and (max-width : 421px) {
+@media all and (max-width : 415px) {
   .confirm-container {
-    margin-top: 40px;
+    margin-top: 50px;
   }
+}
+@media all and (max-width: 313px) {
+  .confirm-container {
+    margin-top: 80px;
+  }
+}
+@media all and (max-width : 295px) {
+  .email-container {
+    margin-top: 25px;
+  }
+  .password-container {
+    margin-top: 30px;
+  }
+  .confirm-container {
+    margin-top: 110px;
+  }
+
 }
 </style>

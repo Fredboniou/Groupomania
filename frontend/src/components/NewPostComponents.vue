@@ -127,7 +127,7 @@ form {
   margin: auto;
   width: 50%;
   max-width: 600px;
-  background: white;
+  background: #ffffff;
   display: grid;
   grid-template-rows: repeat(4, 104px, 104px, auto, 104px);
   padding: 60px 45px 30px;
