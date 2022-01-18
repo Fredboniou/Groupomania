@@ -153,7 +153,6 @@ export default {
 form{
   margin: auto;
   width: 50%;
-  //min-width: 380px;
   max-width: 600px;
   background: white;
   display: grid;
@@ -189,8 +188,6 @@ button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   width: 50%;
-  //height: 50%;
-  //margin: 12px auto 0;
   margin: 10px auto 0;
   padding: 10px;
   border-radius: 150px;
@@ -221,12 +218,6 @@ a {
         color: #fc2e06;
     }
 }
-// h3 {
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 .msg {
    font-family: 'Amaranth', sans-serif;
    margin: auto;

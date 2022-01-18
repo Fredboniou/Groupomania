@@ -33,9 +33,6 @@
                         <div class="postDate">
                             <p>posté {{ post.date }}</p>
                         </div>
-                        <!-- <div class="postLikes">
-                            <p><i class="fas fa-thumbs-up"></i> {{ post.likes }}</p>
-                        </div> -->
                     </div>
                     <div class="comments">
                         <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
@@ -148,13 +145,11 @@ export default {
 
 
 
-<style lang="scss" scoped>
-    //.post, .noPost 
+<style lang="scss" scoped> 
     .seePost {
         margin: 30px auto;
         height: auto;
         width: 50%;
-        //min-width: 380px;
         max-width: 600px;
         background: white;       
         padding: 60px 45px 30px;
@@ -166,10 +161,6 @@ export default {
         display: flex;
         justify-content: center;
     }
-    // .head {
-    //     display: flex;
-    //     justify-content: center;
-    // }
     .createProfile {
         display: none;
     }
@@ -188,18 +179,6 @@ export default {
 .menu-toggle {
     display: none;
 }
-// #fa-user-mobile {
-//     display: none;
-// }
-// #fa-user-screen {
-//     display: none;
-// }
-// h3 {
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 .msg {
    font-family: 'Amaranth', sans-serif;
    margin: auto;
@@ -213,7 +192,6 @@ export default {
     margin: auto;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
     height: 4px;
-    //border-bottom: 4px solid linear-gradient(65deg, #f89e8c, #fc2e06);
     width: 50%;
     max-width: 600px;
 }
@@ -271,7 +249,6 @@ a {
     margin-left: 10px;
     border: none;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-    //height: 10%;
     padding: 2px;
     border-radius: 150px;
     font-size: 1rem;
@@ -300,9 +277,6 @@ a {
     .createProfile {
         display: initial;
     }
-    // .infoToUser {
-    //     display: initial;
-    // }
     .menu-checkbox {
         display: initial;
         opacity: 0;

@@ -31,10 +31,4 @@ p {
     font-size: 1rem;
   }
 }
-
-// @media all and (max-device-width : 480px) {
-//   p {
-//     display: none;
-//   }
-// }
 </style>

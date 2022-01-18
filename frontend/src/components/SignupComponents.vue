@@ -114,7 +114,6 @@ export default {
 form {
   margin: auto;
   width: 50%;
-  //min-width: 480px;
   max-width: 600px;
   background: #ffffff;
   display: grid;
@@ -149,12 +148,10 @@ input[type="email"] {
 }
 span {
   margin-bottom: 20px;
-  //display: block;
   font-size: 0.8rem;
   color: red;
 }
 p {
-  //background: red;
   width: 33%;
   height: 6px;
   margin: -2px 0 2px;
@@ -162,14 +159,9 @@ p {
   visibility: hidden;
   transition: 0.3s;
 }
-// #security span {
-//   display: inline;
-// }
-
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  //width: 50%;
   margin: 12px auto 0;
   padding: 10px;
   border-radius: 150px;
@@ -183,10 +175,6 @@ button {
       transform: translateX(2px);
   }
 }
-// .error input {
-//   color: red;
-//   border: 1px solid rgba(255, 0, 0, 0.527);
-// }
 .error span {
   visibility: visible;
   opacity: 1;
@@ -207,16 +195,6 @@ button {
   background: #5ef9a4;
   visibility: visible;
 }
-// h3 {
-//   margin: auto;
-//   width: 100%;
-//    min-width: 530px;
-//   max-width: 700px;
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 .msg {
   font-family: 'Amaranth', sans-serif;
   margin: 0 auto;
@@ -234,13 +212,6 @@ button {
   .form-container {
     width: 100%;
   }
-  // form {
-  //   width: 100%;
-  // }
-  // .msg {
-  //   width: 100%;
-  // }
-
 }
 @media all and (max-width : 646px) {
   .confirm-container {
@@ -256,7 +227,6 @@ button {
     width: 100%;
   }
   .msg {
-  //   margin: 0;
     width: 100%;
   }
 }

@@ -7,7 +7,6 @@
         <div class="form-container">
             <form @submit.prevent="createPost" autocomplete="off">
                 <div class="post-container">
-                    <!--<label for="content">Votre publication</label>-->
                     <textarea v-model="form.content" name="textarea" id="content" maxlength="300" autocomplete="off" placeholder="Votre publication..." required aria-required="true" aria-label="Votre publication"></textarea>                 
                 </div>
                 <div class="picture-container">
@@ -71,15 +70,12 @@ export default {
                 const token = data.token;
                 const userId = this.form.userId;
                 const content = this.form.content;
-                //const url = this.form.image.name;
                 const image = this.form.image;
-                //const infos = {userId, content};
                 const self = this;
 
                 let formData = new FormData();
                 formData.append("userId", userId);
                 formData.append("content", content);
-                //formData.append("url", url);
                 formData.append("image", image);
                 console.log(formData);
 
@@ -130,7 +126,6 @@ export default {
 form {
   margin: auto;
   width: 50%;
-  //min-width: 380px;
   max-width: 600px;
   background: white;
   display: grid;
@@ -155,15 +150,12 @@ textarea {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 9px;
   font-size: 1.1rem;
-  //padding-left: 10px;
   transition: 0.2s;
 }
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   width: 50%;
-  //height: 50%;
-  //margin: 12px auto 0;
   margin: 10px auto 0;
   padding: 10px;
   border-radius: 150px;
@@ -194,12 +186,6 @@ a {
         color: #fc2e06;
     }
 }
-// h3 {
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 .msg{
    font-family: 'Amaranth', sans-serif;
    margin: auto;

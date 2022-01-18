@@ -102,7 +102,6 @@ export default {
                 const postId = this.$route.params.id;
                 const content = this.form.content;
                 const image = this.form.image;
-                //const infos = {userId, postId, content};
                 const self = this;
                 console.log(postId);
 
@@ -218,8 +217,6 @@ textarea {
 .publication, .deletePic {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  //width: 25%;
-  //height: 50%;
   margin: 12px auto 0;
   margin: 10px auto;
   padding: 2px;
@@ -268,10 +265,8 @@ textarea {
     font-size: 1.5rem;
 }
 .modifDel {
-   border: none;
+  border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  //width: 25%;
-  //height: 50%;
   margin: 12px auto 0;
   margin: 10px auto;
   padding: 2px;
@@ -286,17 +281,10 @@ textarea {
       transform: translateX(2px);
   } 
 }
-// h3 {
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 .seeCom {
     margin: 30px auto;
     height: auto;
     width: 50%;
-    //min-width: 380px;
     max-width: 600px;
     background: white;       
     padding: 60px 45px 30px;
@@ -333,7 +321,6 @@ h4 {
     margin: auto;
     background: linear-gradient(65deg, #f89e8c, #fc2e06);
     height: 4px;
-    //border-bottom: 4px solid linear-gradient(65deg, #f89e8c, #fc2e06);
     width: 50%;
     max-width: 600px;
 }

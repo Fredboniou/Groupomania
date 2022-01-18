@@ -100,7 +100,6 @@ export default {
                     },
                 })
                 .then(function(response) {
-                    //this.$router.push("/");
                     console.log(response);
                 })
                 .catch(function(error) {
@@ -112,7 +111,6 @@ export default {
                     } else {
                         this.$router.push("/")
                     }
-            //this.$router.push("/");
         },
     }
 }
@@ -132,9 +130,7 @@ a {
 }
 .profile {
     margin: 30px auto;
-    //height: auto;
     width: 50%;
-    //min-width: 380px;
     max-width: 600px;
     background: white;       
     padding: 60px 45px 30px;
@@ -169,10 +165,6 @@ img {
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  //width: 50%;
-  //height: 50%;
-  //margin: 12px auto 0;
-  //margin: 10px auto 0;
   margin-left: 10px;
   padding: 2px;
   border-radius: 150px;

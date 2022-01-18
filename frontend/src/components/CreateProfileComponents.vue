@@ -56,7 +56,6 @@ export default {
                 school: "",
                 userBirthday: "",
                 userBio: "",
-                //url: "",
             },
             preview: null,
             image: null,
@@ -90,33 +89,15 @@ export default {
             }
             return today = year + "-" + month + "-" + day;
         },
-        // cityIsValid() {
-        //     return !!this.form.city;
-        // },
-        // schoolIsValid() {
-        //     return !!this.form.school;
-        // },
-        // birthdayIsValid() {
-        //     return !!this.form.userBirthday;
-        // },
-        // bioIsValid() {
-        //     return !!this.form.userBio;
-        // },
     },
     methods: {
         submitForm() {
-
-            //if (this.cityIsValid || this.schoolIsValid || this.birthdayIsValid || this.bioIsValid) {
-                //const data = JSON. parse(localStorage.getItem("form"));
-                //const token = data.token;
                 const userId = this.form.userId;
                 const city = this.form.city;
                 const school = this.form.school;
                 const birthday = this.form.userBirthday;
                 const bio = this.form.userBio;
-                //const url = this.image.name;
                 const image = this.image;
-                //const infos = {userId, city, school, birthday, bio, url};
                 console.log(this.image);
                 
                 let formData = new FormData();
@@ -125,7 +106,6 @@ export default {
                 formData.append("school", school);
                 formData.append("birthday", birthday);
                 formData.append("bio", bio);
-                //formData.append("url", url);
                 formData.append("image", image);
                 console.log(formData);
 
@@ -141,9 +121,8 @@ export default {
                         console.log(error);
                     })
                 }
-            //}
         },
-        previewImage: function(event) {
+        previewImage(event) {
             let input = event.target;
             if (input.files) {
                 let reader = new FileReader();
@@ -155,18 +134,6 @@ export default {
                 console.log(this.image.name);
             }
         },
-        // onFileChange(e) {
-        //     this.form.url = e.target.files[0];
-        //     console.log(this.form.url);
-        //     // this.form.url = this.$refs.file.files[0];
-        //     // console.log(this.form.url);
-        // }
-        // onFileChange(e) {
-        //     const file = e.target.files[0]
-        //     console.log(file);
-        //     this.form.url = URL.createObjectURL(file);
-        //     console.log(this.form.url);
-        // }
     }
 }
 </script>
@@ -193,7 +160,6 @@ export default {
 form{
   margin: auto;
   width: 50%;
-  //min-width: 380px;
   max-width: 600px;
   background: white;
   display: grid;
@@ -246,7 +212,6 @@ button {
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   width: 50%;
   height: 50%;
-  //margin: 12px auto 0;
   margin: 50px auto 0;
   padding: 10px;
   border-radius: 150px;
@@ -277,12 +242,6 @@ a {
         color: #fc2e06;
     }
 }
-// h3 {
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 img {
     overflow : hidden;
 	-webkit-border-radius : 50px;

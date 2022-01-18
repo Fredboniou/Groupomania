@@ -52,12 +52,6 @@ export default {
       submitForm() {
         const formIsValid = this.emailIsValid && this.passwordIsValid;
 
-        // if (formIsValid){
-        //         console.log("Utilisateur identifié", this.form);
-        //     } else {
-        //         console.log("invalid form");
-        //     }
-
         if (formIsValid) {
           const self = this;
           axios.post("http://localhost:3000/api/user/login", this.form)
@@ -134,19 +128,6 @@ span {
   font-size: 0.8rem;
   color: red;
 }
-// p {
-//   background: red;
-//   width: 33%;
-//   height: 6px;
-//   margin: -2px 0 2px;
-//   border-radius: 50px;
-//   visibility: hidden;
-//   transition: 0.3s;
-// }
-// #security span {
-//   display: inline;
-// }
-
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
@@ -165,21 +146,11 @@ button {
       transform: translateX(2px);
   }
 }
-// .error input {
-//   color: red;
-//   border: 1px solid rgba(255, 0, 0, 0.527);
-// }
 .error span {
   visibility: visible;
   opacity: 1;
   color: red;
 }
-// h3 {
-//     border: 1px solid black;
-//     padding: 20px;
-//     border-radius: 50px;
-//     background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 .msg {
   //font-family: 'Merienda', cursive;
   font-family: 'Amaranth', sans-serif;
