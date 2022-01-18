@@ -75,8 +75,8 @@ export default {
               self.$router.push("/posts")
             })
             .catch(function(error) {
-              // alert("Il y a une erreur dans votre email et/ou dans votre mot de passe !")
-              // self.$router.push("/");
+              alert("Il y a une erreur dans votre email et/ou dans votre mot de passe !")
+              window.location.reload();
               console.log(error);
             })
         } else {

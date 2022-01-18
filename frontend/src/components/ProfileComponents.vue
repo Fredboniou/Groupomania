@@ -100,13 +100,19 @@ export default {
                     },
                 })
                 .then(function(response) {
-                    this.$router.push("/");
+                    //this.$router.push("/");
                     console.log(response);
                 })
                 .catch(function(error) {
                     console.log(error);
                 })
             }
+            if (this.admin == 1) {
+                        this.$router.push("/posts")
+                    } else {
+                        this.$router.push("/")
+                    }
+            //this.$router.push("/");
         },
     }
 }
