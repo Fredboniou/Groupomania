@@ -195,14 +195,13 @@ button {
   background: #5ef9a4;
   visibility: visible;
 }
-.msg {
-  font-family: 'Amaranth', sans-serif;
-  margin: 0 auto;
-  width: 80%;
-  border: 1px solid #000000;
-  border-radius: 50px;
-  background: linear-gradient(65deg, #f89e8c, #fc2e06);
-}
+// .msg {
+//   margin: 0 auto;
+//   width: 80%;
+//   border: 1px solid #000000;
+//   border-radius: 50px;
+//   background: linear-gradient(65deg, #f89e8c, #fc2e06);
+// }
 @media all and (max-width : 1155px) {
   .confirm-container {
     margin-top: 30px;

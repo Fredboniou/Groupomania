@@ -39,25 +39,53 @@ exports.deletePost = (req, res) => {
 exports.updatePost = (req, res) => {
     const postId = req.params.id;
     const content = req.body.content;
+    const imageBody = req.body.image;
     let image;
 
     if (req.file) {
         image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
         console.log(image);
-    } else {
+        const sql = "UPDATE post SET content=?, date=NOW(), image=? WHERE id=?"
+        const values = [content, image, postId];
+        console.log("middleware 1");
+        console.log(req.file);
+        console.log(imageBody);
+        db.query(sql, values, function(err, result) {
+            if (err) {
+                return res.status(400).json({ message: "Impossible de modifier le post !" })
+            }
+            res.status(201).json({ message: "Post modifié !" })
+        });
+
+    } else 
+    if (imageBody) {
+        const sql = "UPDATE post SET content=?, date=NOW() WHERE id=?"
+        const values = [content, postId];
+        console.log("middleware 2");
+        console.log(req.file);
+        console.log(imageBody);
+        db.query(sql, values, function(err, result) {
+            if (err) {
+                return res.status(400).json({ message: "Impossible de modifier le post !" })
+            }
+            res.status(201).json({ message: "Post modifié !" })
+        })
+    } else  
+     {
         image = null;
+        console.log(image);
+        const sql = "UPDATE post SET content=?, date=NOW(), image=? WHERE id=?"
+        const values = [content, image, postId];
+        console.log("middleware 3");
+
+        db.query(sql, values, function(err, result) {
+            if (err) {
+                return res.status(400).json({ message: "Impossible de modifier le post !" })
+            }
+            res.status(201).json({ message: "Post modifié !" })
+        });
     }
-
-    const sql = "UPDATE post SET content=?, date=NOW(), image=? WHERE id=?"
-    const values = [content, image, postId];
-
-    db.query(sql, values, function(err, result) {
-        if (err) {
-            return res.status(400).json({ message: "Impossible de modifier le post !" })
-        }
-        res.status(201).json({ message: "Post modifié !" })
-    });
-};
+}
 
 exports.getAllPosts = (req, res) => {
     const sql = "SELECT post.id, userId, nom, prenom, content, DATE_FORMAT(post.date, 'le %d %b %Y à %H:%i') AS date, likes, post.image AS postPic, user.image AS userPic FROM user INNER JOIN post ON user.id = post.userId ORDER BY post.date DESC";

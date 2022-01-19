@@ -123,6 +123,7 @@ export default {
 .form-container {
     display: flex;
 }
+//idem signup, 
 form {
   margin: auto;
   width: 50%;
@@ -135,9 +136,11 @@ form {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   position: relative;
 }
+//idem signup, 
 div {
   transition: 0.2s;
 }
+//idem signup,
 label {
   letter-spacing: 1px;
 }
@@ -187,14 +190,8 @@ a {
     }
 }
 .msg{
-   font-family: 'Amaranth', sans-serif;
-   margin: auto;
    margin-top: 20px;
    margin-bottom: 20px;
-   width: 80%;
-   border: 1px solid #000000;
-   border-radius: 50px;
-   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .picture-container {
     margin-top: 50px;

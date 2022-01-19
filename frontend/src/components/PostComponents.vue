@@ -137,7 +137,7 @@ export default {
         replaceAvatar(firstname, name) {
             const initFirstName = firstname.substring(0, 1).toUpperCase();
             const initName = name.substring(0, 1).toUpperCase();
-            return `${initFirstName}-${initName}`
+            return `${initFirstName} ${initName}`
         },
     }
 }
@@ -180,13 +180,7 @@ export default {
     display: none;
 }
 .msg {
-   font-family: 'Amaranth', sans-serif;
-   margin: auto;
    margin-top: 20px;
-   width: 80%;
-   border: 1px solid #000000;
-   border-radius: 50px;
-   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .separate {
     margin: auto;
@@ -211,6 +205,9 @@ export default {
     margin-bottom: 5px;
 }
 .replaceAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
     width: 50px;
     height: 50px;
@@ -221,9 +218,9 @@ export default {
     background: #000000;
 }
 .initials {
-    position: absolute;
-    left: 10px;
-    top: 12px;
+    // position: absolute;
+    // left: 10px;
+    // top: 12px;
     font-size: 1rem;
 }
 h4 {

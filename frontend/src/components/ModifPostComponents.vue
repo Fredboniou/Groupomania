@@ -81,8 +81,10 @@ export default {
             .then(function(response) {
                 self.post = response.data.result;
                 self.form.content = self.post[0].content;
-                self.form.preview = self.post[0].image;
+                self.form.image = self.post[0].image;
+                self.form.preview = self.form.image;
                 console.log(self.post);
+                console.log(self.form.image);
             })
             .catch(function(error) {
                 console.log(error);
@@ -92,34 +94,64 @@ export default {
             const postIsValid = this.contentIsValid;
 
             if(postIsValid) {
-                const data = JSON.parse(localStorage.getItem("form"));
-                const token = data.token;
-                const postId = this.$route.params.id;
-                const content = this.form.content;
-                const image = this.form.image;
-                const self = this;
+                if (this.form.image == null) {
+                    const data = JSON.parse(localStorage.getItem("form"));
+                    const token = data.token;
+                    const postId = this.$route.params.id;
+                    const content = this.form.content;
+                    const self = this;
+                    console.log(this.form.image);
 
-                let formData = new FormData();
-                formData.append("postId", postId);
-                formData.append("content", content);
-                formData.append("image", image);
-                console.log(formData);
+                    let formData = new FormData();
+                    formData.append("postId", postId);
+                    formData.append("content", content);
+                    console.log(formData);
 
+                    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-                axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+                    axios.put("http://localhost:3000/api/post/" + postId, formData, {
+                        headers: {
+                            Authorization: "bearer " + token
+                        },
+                    })
+                    .then(function(response) {
+                        self.$router.push("/posts")
+                        console.log(response);
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    })
+                }
+                else {
+                    const data = JSON.parse(localStorage.getItem("form"));
+                    const token = data.token;
+                    const postId = this.$route.params.id;
+                    const content = this.form.content;
+                    const image = this.form.image;
+                    const self = this;
+                    console.log(image);
 
-                axios.put("http://localhost:3000/api/post/" + postId, formData, {
-                    headers: {
-                        Authorization: "bearer " + token
-                    },
-                })
-                .then(function(response) {
-                    self.$router.push("/posts")
-                    console.log(response);
-                })
-                .catch(function(error) {
-                    console.log(error);
-                })
+                    let formData = new FormData();
+                    formData.append("postId", postId);
+                    formData.append("content", content);
+                    formData.append("image", image);
+                    console.log(formData);
+
+                    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+                    axios.put("http://localhost:3000/api/post/" + postId, formData, {
+                        headers: {
+                            Authorization: "bearer " + token
+                        },
+                    })
+                    .then(function(response) {
+                        self.$router.push("/posts")
+                        console.log(response);
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    })
+                }
             }
         },
         previewImage(event) {
@@ -133,12 +165,13 @@ export default {
                 self.form.image=input.files[0];
                 reader.readAsDataURL(input.files[0]);
                 console.log(self.form.image.name);
-            }
+            } 
         },
         deletePic() {
             this.form.preview = null;
             this.form.image = null;
-        }
+            console.log(this.form.image);
+        },
     }
     
 }
@@ -154,7 +187,7 @@ form{
   margin: auto;
   width: 50%;
   max-width: 600px;
-  background: white;
+  background: #ffffff;
   display: grid;
   grid-template-rows: repeat(4, 104px, 104px, auto, 104px);
   padding: 60px 45px 30px;
@@ -219,14 +252,8 @@ a {
     }
 }
 .msg {
-   font-family: 'Amaranth', sans-serif;
-   margin: auto;
    margin-top: 20px;
    margin-bottom: 20px;
-   width: 80%;
-   border: 1px solid #000000;
-   border-radius: 50px;
-   background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .picture-container {
     margin-top: 50px;

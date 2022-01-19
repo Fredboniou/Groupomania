@@ -1,7 +1,7 @@
 <template>
     <div class="editProfile">
         <router-link to="/posts">Revenir au fil d'actualité</router-link>
-        <div class="createProfile">
+        <div class="msg">
             <h3>{{ CreateProfileMsg }}</h3>
         </div>
         <div class="caution">
@@ -144,15 +144,9 @@ export default {
 .form-container {
     display: flex;
 }
-.createProfile {
-    font-family: 'Amaranth', sans-serif;
-    margin: auto;
+.msg {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 80%;
-    border: 1px solid #000000;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .picture-container {
     margin-top: 45px;
@@ -161,7 +155,7 @@ form{
   margin: auto;
   width: 50%;
   max-width: 600px;
-  background: white;
+  background: #ffffff;
   display: grid;
   grid-template-rows: repeat(4, 104px);
   padding: 60px 45px 30px;
@@ -256,7 +250,7 @@ img {
         width: 100%;
         padding: 60px 0 30px;
     }
-    .createProfile {
+    .msg {
         width: 100%;
     }
     input[type="text"] {

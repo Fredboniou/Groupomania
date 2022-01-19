@@ -240,13 +240,7 @@ textarea {
   }
 }
 .msg {
-    font-family: 'Amaranth', sans-serif;
-    margin: auto;
     margin-top: 20px;
-    width: 80%;
-    border: 1px solid #000000;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .replaceAvatar {
     color: #ffffff;

@@ -3,7 +3,7 @@
         <div class="header">
             <router-link to="/posts">Revenir au fil d'actualité</router-link>
         </div>
-        <div class="profileName">
+        <div class="msg">
             <h3 :aria-label="`Vous visitez le profil de ${profile.prenom} ${profile.nom}`">{{ profile.prenom }} {{profile.nom }}</h3>
         </div>
         <div class="profile">
@@ -138,16 +138,9 @@ a {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     position: relative;
 }
-.profileName {
-    font-family: 'Amaranth', sans-serif;
-    margin: auto;
+.msg {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 80%;
-    border: 1px solid black;
-    padding: 0px;
-    border-radius: 50px;
-    background: linear-gradient(65deg, #f89e8c, #fc2e06);
 }
 .description {
     text-decoration: underline;
@@ -183,7 +176,7 @@ button {
         width: 100%;
         padding: 60px 0 30px;
     }
-    .profileName {
+    .msg {
         width: 100%;
     }
     p {

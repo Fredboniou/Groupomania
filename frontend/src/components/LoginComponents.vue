@@ -151,15 +151,6 @@ button {
   opacity: 1;
   color: red;
 }
-.msg {
-  //font-family: 'Merienda', cursive;
-  font-family: 'Amaranth', sans-serif;
-  margin: 0 auto;
-  width: 80%;
-  border: 1px solid #000000;
-  border-radius: 50px;
-  background: linear-gradient(65deg, #f89e8c, #fc2e06);
-}
 @media all and (max-width : 760px) {
   .form-container {
     width: 100%;
