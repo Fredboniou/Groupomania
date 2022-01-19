@@ -2,15 +2,17 @@
     <div class="wall">
         <div class="head">
             <input type="checkbox" id="menu-checkbox" class="menu-checkbox" />
-            <label for="menu-checkbox" class="menu-toggle"><i class="fas fa-user" id="fa-user-mobile"></i> {{ fullname() }}</label>
+            <label for="menu-checkbox" class="menu-toggle">&equiv; {{ fullname() }}</label>
             <div class="userChoice">
-                <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile">{{ fullname() }}</router-link></div>
+                <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
                 <div class="createProfile"><router-Link to="/createProfile">Modifier mon profil</router-Link></div>
-                <div class="userResp"><router-link to="/createprofile">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
+                <div class="separateMenu"></div>
                 <div class="newPost"><router-link to="/newpost">Créer une publication</router-link></div><span class="separateUserChoice"> | </span>
+                <div class="separateMenu"></div>
                 <button class="disconnect" @click="disconnect">Déconnexion</button>
             </div>
         </div>
+            <img src="../assets/logo-white-rs.png" alt="logo groupomania blanc" class="logo">
         <div class="noPost" v-if="this.posts == ''">
             <h1>Aucun post à afficher</h1>
         </div>
@@ -146,6 +148,7 @@ export default {
 
 
 <style lang="scss" scoped> 
+
     .seePost {
         margin: 30px auto;
         height: auto;
@@ -160,6 +163,10 @@ export default {
     .userChoice {
         display: flex;
         justify-content: center;
+        margin-bottom: -100px;
+    }
+    .post {
+        margin-top: -180px;
     }
     .createProfile {
         display: none;
@@ -177,6 +184,9 @@ export default {
     display: none;
 }
 .menu-toggle {
+    display: none;
+}
+.separateMenu {
     display: none;
 }
 .msg {
@@ -271,6 +281,11 @@ a {
     .initials {
         display: initial;
     }
+    // .logo {
+    //     height: 150px;
+    //     margin-top: -50px;
+    //     margin-bottom: 100px;
+    //}
     .createProfile {
         display: initial;
     }
@@ -284,12 +299,26 @@ a {
             display: none
         }
     .menu-checkbox:checked ~ .userChoice {
+        background: #ffffff;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        margin-bottom: -50px;
+    }
+    .disconnect {
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
     .separateUserChoice {
         display: none;
+    }
+    .separateMenu {
+        display: initial;
+        margin: auto;
+        background: #000000;
+        height: 1px;
+        width: 70%;
     }
     .menu-toggle {
         display: initial;
@@ -323,6 +352,14 @@ a {
     }
     .modifDel {
         margin-top: 5px;
+    }
+}
+@media all and (max-width : 384px) {
+    .logo {
+        height: 150px;
+    }
+    .post {
+        margin-top: -100px;
     }
 }
 </style>

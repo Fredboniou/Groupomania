@@ -31,4 +31,9 @@ p {
     font-size: 1rem;
   }
 }
+// @media all and (max-width: 400px) {
+//   p {
+//     font-size: 0.7rem;
+//   }
+// }
 </style>

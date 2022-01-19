@@ -5,8 +5,11 @@
       <label for="menu-checkbox" class="menu-toggle">&equiv; Menu</label>
       <ul class="menu">
         <li><router-link to="/">Home</router-link></li><span> | </span>
+        <div class="separate"></div>
         <li><router-link to="/about">About</router-link></li><span> | </span>
+        <div class="separate"></div>
         <li><router-link to="/login">Accès membre</router-link></li><span> | </span>
+        <div class="separate"></div>
         <li><router-link to="/signup">Créer un compte</router-link></li>
       </ul>
     </div>
@@ -28,8 +31,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.whiteLogo {
+  display: none;
+}
 li {
   list-style: none;
+}
+.separate {
+  display: none;
 }
 .menu {
   display: flex;
@@ -78,9 +87,20 @@ img {
     display: none;
   }
   .menu-checkbox:checked ~ .menu {
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  a {
+    margin-left: -20px;
+  }
+  .separate {
+    display: initial;
+    margin-left: -20px;
+    background: #000000;
+    height: 1px;
+    width: 90%;
   }
   span {
     display: none;
@@ -96,6 +116,12 @@ img {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap; 
+  }
+}
+@media all and (max-width : 400px) {
+  img {
+    width: 200px;
+    height: 200px;
   }
 }
 </style>
