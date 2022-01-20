@@ -1,54 +1,27 @@
 <template>
-    <div class="allPosts">
-        <HeaderComponents />
-        <div class="wall">
-            <div class="noPost" v-if="this.posts == ''">
-                <h1>Aucun post à afficher</h1>
-            </div>
-            <div class="post" v-else>
-                <MsgComponents msg="fil d'actualité" />
-                <div class="allPosts" v-for="(post, idx) in posts" :key="idx">
-                    <div class="seePost">
-                        <div class="userName">                       
-                            <img :src="post.userPic" :alt="`${post.prenom} ${post.nom}`" id="profilePic" v-if="post.userPic != null" :aria-label="`photo de profil de ${post.prenom} ${post.nom}`">
-                            <div class="replaceAvatar" v-else><span class="initials">{{ replaceAvatar(post.prenom, post.nom) }}</span></div>
-                            <router-link :to="`/profile/${post.userId}`" id="userName" :aria-label="`Visitez le profil de ${post.prenom} ${post.nom}`"><h4>{{ post.prenom }} {{ post.nom }}</h4></router-link>
-                        </div>
-                        <div class="postContent">
-                            <p>{{ post.content }}</p><br>
-                            <img v-if="post.postPic != null" :src="post.postPic" alt="" id="postPicture">
-                        </div>
-                        <div class="dateLikes">
-                            <div class="postDate">
-                                <p>posté {{ post.date }}</p>
-                            </div>
-                        </div>
-                        <div class="comments">
-                            <router-link :to="`/post/${post.id}`" id="comments">Voir/laisser un commentaire</router-link>
-                        </div>
-                        <div class="ownerOptions" v-if="userId==post.userId || admin==1">
-                            <router-link :to="`/modifpost/${post.id}`" v-if="userId==post.userId"><button class="modifDel">Modifier</button></router-link>
-                            <button class="modifDel" @click="deletePost(post.id)">Supprimer</button>
-                        </div>
-                    </div>
-                    <div class="separate"></div>
-                </div>
-            </div>
+    <div class="head">
+        <input type="checkbox" id="menu-checkbox" class="menu-checkbox" />
+        <label for="menu-checkbox" class="menu-toggle">&equiv; {{ fullname() }}</label>
+        <div class="userChoice">
+            <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
+            <div class="createProfile"><router-Link to="/createProfile">Modifier mon profil</router-Link></div>
+            <div class="separateMenu"></div>
+            <div class="newPost"><router-link to="/newpost">Créer une publication</router-link></div><span class="separateUserChoice"> | </span>
+            <div class="separateMenu"></div>
+            <button class="disconnect" @click="disconnect">Déconnexion</button>
         </div>
+        <img src="../assets/logo-white-resize.png" alt="logo groupomania blanc" class="logo">
+        <img src="../assets/logo-white-rs.png" alt="logo groupomania blanc" class="logoResp">
     </div>
 </template>
 
+
+
 <script>
 import axios from "axios";
-import HeaderComponents from "@/components/HeaderComponents.vue";
-import MsgComponents from "@/components/MsgComponents.vue";
 
 export default {
-    name: "Post",
-    components: {
-        HeaderComponents,
-        MsgComponents,
-    },
+    name: "HeaderComponents",
     data() {
         return {
             posts: [],
@@ -137,6 +110,8 @@ export default {
 }
 </script>
 
+
+
 <style lang="scss" scoped>
 .seePost {
         margin: 30px auto;
@@ -153,6 +128,7 @@ export default {
         display: flex;
         justify-content: center;
         margin-bottom: -10px;
+        background: #ffffff;
     }
     .post {
         margin-top: -30px;
@@ -273,11 +249,9 @@ a {
     .initials {
         display: initial;
     }
-    // .logo {
-    //     height: 150px;
-    //     margin-top: -50px;
-    //     margin-bottom: 100px;
-    //}
+    .logo {
+        align-self: center;
+    }
     .createProfile {
         display: initial;
     }
@@ -291,10 +265,11 @@ a {
             display: none
         }
     .menu-checkbox:checked ~ .userChoice {
+        width: 100%;
         background: #ffffff;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
     .disconnect {
         margin: auto;
@@ -318,7 +293,8 @@ a {
     }
     .head {
         display: flex;
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
         flex-wrap: wrap;
     }
     .user {
@@ -352,6 +328,7 @@ a {
     .logoResp {
         display: initial;
         height: 200px;
+        align-self: center;
     }
     .post {
         margin-top: -80px;

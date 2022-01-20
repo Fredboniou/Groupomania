@@ -15,6 +15,7 @@
 
 
 body {
+  margin: 0;
   background-color: #b9b9b9;
 }
 button {
