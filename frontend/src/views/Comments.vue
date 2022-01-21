@@ -13,12 +13,12 @@
                 <div class="picture-container">
                     <label for="picture">Ajoutez une image pour illustrer votre commentaire : </label>
                     <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
+                    <button v-if="form.preview != null && form.image != null" @click="deletePic" class="deletePic">Supprimer l'image</button>
                     <div id="preview">
                         <img v-if="form.preview" :src="form.preview" />
                     </div> 
                 </div>
                 <button :disabled="!contentIsValid" class="publication">Publier</button>
-                <button v-if="form.preview != null && form.image != null" @click="deletePic" class="deletePic">Supprimer l'image</button>
             </form>
         </div>
         <div class="noCom" v-if="this.coms == ''">
@@ -218,7 +218,7 @@ textarea {
   padding-left: 10px;
   transition: 0.2s;
 }
-.publication, .deletePic {
+.publication {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
   margin: 12px auto 0;
@@ -242,6 +242,15 @@ textarea {
       background: grey;
       cursor: default;
   }
+}
+.deletePic {
+    background: #000000;
+    color: #fc2e06;
+    font-size: 0.9rem;
+    width: auto;
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 .msg {
     margin-top: 20px;

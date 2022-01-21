@@ -127,8 +127,14 @@ export default {
     .userChoice {
         display: flex;
         justify-content: center;
-        margin-bottom: -10px;
+        //margin-bottom: 20px;
         background: #ffffff;
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+    }
+    .logo {
+        margin-top: 20px;
     }
     .post {
         margin-top: -30px;
@@ -262,7 +268,9 @@ a {
         top: -1000px;
     }
     .userChoice {
-            display: none
+            display: none;
+            position: initial;
+            z-index: 0;
         }
     .menu-checkbox:checked ~ .userChoice {
         width: 100%;

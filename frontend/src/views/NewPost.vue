@@ -12,12 +12,12 @@
                     <div class="picture-container">
                         <label for="picture">Ajoutez une image pour illustrer votre post : </label>
                         <input type="file" accept="image/*" @change="previewImage" id="picture" name="image">
+                        <button v-if="form.preview != null" @click="deletePic" class="deletePic">Supprimer l'image</button>
                         <div id="preview">
                             <img v-if="form.preview" :src="form.preview" />
                         </div>
                     </div>
                     <button :disabled="!contentIsValid">Publier</button>
-                    <button v-if="form.preview != null" @click="deletePic">Supprimer l'image</button>
                 </form>
             </div>
         </div>
@@ -179,6 +179,15 @@ button {
       background: grey;
       cursor: default;
   }
+}
+.deletePic {
+    background: #000000;
+    color: #fc2e06;
+    font-size: 0.9rem;
+    width: auto;
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 a {
     text-decoration: none;
