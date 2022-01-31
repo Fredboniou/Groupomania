@@ -183,13 +183,10 @@ export default {
 
 
 <style lang="scss" scoped>
-.logoResp {
-    display: none;
-}
 .form-container {
     display: flex;
 }
-form{
+form {
   margin: auto;
   width: 50%;
   max-width: 600px;
@@ -218,10 +215,6 @@ textarea {
   font-size: 1.1rem;
   padding-left: 10px;
   transition: 0.2s;
-
-  &:focus {
-      border: 1px solid #5ef9a4;
-  }
 }
 button {
   border: none;
@@ -266,10 +259,6 @@ a {
         color: #fc2e06;
     }
 }
-.msg {
-   margin-top: 20px;
-   margin-bottom: 20px;
-}
 .picture-container {
     margin-top: 50px;
 }
@@ -280,9 +269,6 @@ img {
     form {
         width: 100%;
         padding : 60px 0 30px;
-    }
-    .msg {
-        width: 100%;
     }
     textarea {
         width: 70%;

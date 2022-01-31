@@ -1,7 +1,7 @@
 <template>
     <div class="log">
         <div id="nav">
-            Retourner à la page d'<router-link to="/" aria-label="Retourner à la page d'accueil">accueil</router-link>
+          <router-link to="/" aria-label="Retourner à la page d'accueil">Retourner à la page d'accueil</router-link>
         </div>
         <div class="login">
             <img src="../assets/logo-white-resize.png" alt="logo groupomania blanc" class="logo">
@@ -128,7 +128,6 @@ div {
 label {
   letter-spacing: 1px;
 }
-input[type="text"],
 input[type="password"],
 input[type="email"] {
   margin: 7px 0 7px;
@@ -144,14 +143,14 @@ input[type="email"] {
 }
 span {
   margin-bottom: 20px;
-  //display: block;
   font-size: 0.8rem;
   color: red;
+  visibility: visible;
+  opacity: 1;
 }
 button {
   border: none;
   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-  //width: 50%;
   height: 50%;
   margin: 12px auto 0;
   padding: 10px;
@@ -166,22 +165,9 @@ button {
       transform: translateX(2px);
   }
 }
-.error span {
-  visibility: visible;
-  opacity: 1;
-  color: red;
-}
-// @media all and (max-width : 760px) {
-//   .form-container {
-//     width: 100%;
-//   }
-// }
-@media all and (max-width : 480px) {
+@media all and (max-width : 536px) {
   form {
     margin: 0;
-    width: 100%;
-  }
-  .msg {
     width: 100%;
   }
 }

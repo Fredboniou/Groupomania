@@ -148,10 +148,6 @@ export default {
 .form-container {
     display: flex;
 }
-.msg {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 .picture-container {
     margin-top: 45px;
 }
@@ -184,10 +180,6 @@ input[type="text"] {
   font-size: 1.1rem;
   padding-left: 10px;
   transition: 0.2s;
-
-  &:focus {
-      border: 1px solid #5ef9a4;
-  } 
 }
 textarea {
   margin: 7px 0 7px;
@@ -200,10 +192,6 @@ textarea {
   font-size: 1.1rem;
   padding-left: 10px;
   transition: 0.2s;
-
-  &:focus {
-      border: 1px solid #5ef9a4;
-  }
 }
 button {
   border: none;
@@ -253,9 +241,6 @@ img {
     form {
         width: 100%;
         padding: 60px 0 30px;
-    }
-    .msg {
-        width: 100%;
     }
     input[type="text"] {
         width: 70%;

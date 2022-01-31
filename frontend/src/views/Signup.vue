@@ -1,13 +1,13 @@
 <template>
     <div class="sign">
         <div id="nav">
-            Retourner à la page d'<router-link to="/">accueil</router-link>
+            <router-link to="/">Retourner à la page d'accueil</router-link>
         </div>
         <div class="signup">
-      <img src="../assets/logo-white-resize.png" alt="logo groupomania blanc" class="logo">
-      <img src="../assets/logo-white-rs.png" alt="logo groupomania blanc" class="logoResp">
-        <MsgComponents msg="Inscrivez-vous" />
-        <div class="form-container">
+          <img src="../assets/logo-white-resize.png" alt="logo groupomania blanc" class="logo">
+          <img src="../assets/logo-white-rs.png" alt="logo groupomania blanc" class="logoResp">
+          <MsgComponents msg="Inscrivez-vous" />
+          <div class="form-container">
             <form @submit.prevent="submitForm" autocomplete="off">
                 <div class="name-container">
                     <label for="name">Nom</label>
@@ -44,8 +44,8 @@
                 </div>
                 <button aria-label="valider">Créer mon compte</button>
             </form>
+          </div>
         </div>
-    </div>
     </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
         }
     },
     computed: {
-        nameIsValid() { //on défini ici pour y avoir accès dans notre template
+        nameIsValid() { //on défini ici car les propriétés calculées vont detecter les changements des inputs
             return !!this.form.name;
         },
         firstnameIsValid() {
@@ -129,7 +129,7 @@ a {
 }
 .form-container {
     display: flex;
-     margin-top: 20px;
+    margin-top: 20px;
 }
 form {
   margin: auto;
@@ -170,6 +170,8 @@ span {
   margin-bottom: 20px;
   font-size: 0.8rem;
   color: red;
+  visibility: visible;
+  opacity: 1;
 }
 p {
   width: 33%;
@@ -195,11 +197,6 @@ button {
       transform: translateX(2px);
   }
 }
-.error span {
-  visibility: visible;
-  opacity: 1;
-  color: red;
-}
 .progressRed {
   background: red;
   width: 33%;
@@ -215,13 +212,6 @@ button {
   background: #5ef9a4;
   visibility: visible;
 }
-// .msg {
-//   margin: 0 auto;
-//   width: 80%;
-//   border: 1px solid #000000;
-//   border-radius: 50px;
-//   background: linear-gradient(65deg, #f89e8c, #fc2e06);
-// }
 @media all and (max-width : 1155px) {
   .confirm-container {
     margin-top: 30px;
@@ -237,15 +227,12 @@ button {
     margin-top: 50px;
   }
 }
-@media all and (max-width : 480px) {
+@media all and (max-width : 536px) {
   .confirm-container {
     margin-top: 30px;
   }
   form {
     margin: 0;
-    width: 100%;
-  }
-  .msg {
     width: 100%;
   }
 }

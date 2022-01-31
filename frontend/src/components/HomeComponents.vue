@@ -16,7 +16,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 p {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -31,9 +31,4 @@ p {
     font-size: 1rem;
   }
 }
-// @media all and (max-width: 400px) {
-//   p {
-//     font-size: 0.7rem;
-//   }
-// }
 </style>

@@ -134,7 +134,7 @@ export default {
                 })
             }
         },
-        async getAllComs() {
+        getAllComs() {
             const data = JSON.parse(localStorage.getItem("form"));
             const token = data.token;
             const postId = this.$route.params.id;
@@ -251,9 +251,6 @@ textarea {
     padding: 3px;
     border-radius: 10px;
     margin-bottom: 5px;
-}
-.msg {
-    margin-top: 20px;
 }
 .replaceAvatar {
     color: #ffffff;

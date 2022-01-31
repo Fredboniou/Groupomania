@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.whiteLogo {
-  display: none;
-}
 li {
   list-style: none;
 }
@@ -45,13 +42,11 @@ li {
   justify-content: space-around;
 }
 .menu-checkbox {
-  //visibility: hidden;
   display: none;
 }
 .menu-toggle {
   display: none;
 }
-
 #nav {
   padding: 30px;
   margin-bottom: -30px;
@@ -63,7 +58,6 @@ li {
     background-size: 0 100%;
     transition: background-size .3s;
     &:hover {
-      //color: #961103
       background-size: 100% 100%;
     }
   }
@@ -105,9 +99,6 @@ img {
   span {
     display: none;
   }
-  // .menu-checkbox:focus + .menu-toggle {
-  //   outline: #fc2e06 auto 5px;
-  // }
   .menu-toggle {
     display: initial;
     padding: .5em 1em;

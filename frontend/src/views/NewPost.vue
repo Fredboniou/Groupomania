@@ -198,23 +198,16 @@ a {
         color: #fc2e06;
     }
 }
-.msg{
-   margin-top: 20px;
-   margin-bottom: 20px;
-}
 .picture-container {
     margin-top: 50px;
 }
 img {
     width: 100%;
 }
-@media all and (max-width : 530px) {
+@media all and (max-width : 536px) {
     form {
         width: 100%;
         padding: 60px 0 30px;
-    }
-    .msg {
-        width: 100%;
     }
 }
 </style>

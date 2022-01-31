@@ -11,16 +11,16 @@
                     <p><span class="description" aria-label="Adresse mail de contact">E-mail de contact</span><span class="points"> : </span><a :href="`mailto:#`" :aria-label="`${profile.email}`">{{ profile.email }}</a></p>
                 </div>
                 <div class="profileBirthday">
-                    <p><span class="description">Date de naissance</span><span class="points"> : </span><span v-if="profile.date_naissance==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.date_naissance}`">{{ profile.date_naissance }}</span></p>
+                    <p><span class="description">Date de naissance</span><span class="points"> : </span><span v-if="profile.date_naissance==null || profile.date_naissance==''" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.date_naissance}`">{{ profile.date_naissance }}</span></p>
                 </div>
                 <div class="profileBio">
-                    <p><span class="description">Bio</span><span class="points"> : </span><span v-if="profile.bio==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.bio}`">{{ profile.bio }}</span></p>
+                    <p><span class="description">Bio</span><span class="points"> : </span><span v-if="profile.bio==null || profile.bio==''" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.bio}`">{{ profile.bio }}</span></p>
                 </div>
                 <div class="profileCity">
-                    <p><span class="description">Lieu de résidence</span><span class="points"> : </span><span v-if="profile.ville==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ville}`">{{ profile.ville }}</span></p>
+                    <p><span class="description">Lieu de résidence</span><span class="points"> : </span><span v-if="profile.ville==null || profile.ville==''" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ville}`">{{ profile.ville }}</span></p>
                 </div>
                 <div class="profileSchool">
-                    <p><span class="description">Dernière école fréquentée</span><span class="points"> : </span><span v-if="profile.ecole==null" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ecole}`">{{ profile.ecole }}</span></p>
+                    <p><span class="description">Dernière école fréquentée</span><span class="points"> : </span><span v-if="profile.ecole==null || profile.ecole==''" aria-label="Non renseigné">Non renseigné</span><span v-else :aria-label="`${profile.ecole}`">{{ profile.ecole }}</span></p>
                 </div>
                 <div class="profilePicture" v-if="profile.image != null">
                     <img :src="profile.image" :aria-label="`photo de profil de ${profile.prenom} ${profile.nom}`" />
@@ -146,10 +146,6 @@ a {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     position: relative;
 }
-.msg {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 .description {
     text-decoration: underline;
     font-weight: bold;
@@ -179,20 +175,19 @@ button {
       transform: translateX(2px);
   }
 }
+@media all and (max-width : 686px) {
+p {
+    display: flex;
+    flex-direction: column;
+}
+.points {
+    display: none;
+}
+}
 @media all and (max-width : 536px) {
     .profile {
         width: 100%;
         padding: 60px 0 30px;
-    }
-    .msg {
-        width: 100%;
-    }
-    p {
-        display: flex;
-        flex-direction: column;
-    }
-    .points {
-        display: none;
     }
     .description {
         margin-bottom: 10px;

@@ -18,5 +18,13 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.msg {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media all and (max-width : 536px) {
+    .msg {
+        width: 100%;
+    }
+}
 </style>
