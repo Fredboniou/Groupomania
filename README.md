@@ -18,14 +18,15 @@ Pour commencer...
 
 - Clonez le projet sur votre machine
 
-- Importez la base de données qui se trouve dans le dossier database.sql :
-    - Ouvrez cmd, et naviguez dans le dossier ou l'app a été clonée,
-    - tapez : mysql -u root -p"votre mot de passe" groupomania < database.sql (veillez à ne pas mettre d'espace entre '-p' et votre mot de passe)
-
 - Rendez vous dans le dossier backend renommer le fichier .env.ex en .env puis ouvrez le.
     - DB_USER=votre nom d'utilisateur MySQL
     - DB_PASSWORD=votre mot de passe MySQL
     - DB_TOKEN=créez un token
+    
+- Importez la base de données qui se trouve dans le dossier database.sql :
+    - Ouvrez cmd, et naviguez dans le dossier ou l'app a été clonée,
+    - tapez : mysql -u root -p"votre mot de passe" groupomania < database.sql (veillez à ne pas mettre d'espace entre '-p' et votre mot de passe)
+
 
 Démarrer l'application...
 ---------------------------------------------------------

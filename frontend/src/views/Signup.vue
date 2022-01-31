@@ -71,7 +71,7 @@ export default {
     },
     computed: {
         nameIsValid() { //on défini ici car les propriétés calculées vont detecter les changements des inputs
-            return !!this.form.name;
+            return !!this.form.name; //le !! test si this.form.name contient quelque chose. Renvoi true si il contient quelque chose
         },
         firstnameIsValid() {
             return !!this.form.firstname;
@@ -83,7 +83,7 @@ export default {
           return !!(/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(this.form.password))
         },
         formIsValid() {
-            return this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && !(this.form.confirm != this.passwordIsValid);
+          return this.nameIsValid && this.firstnameIsValid && this.emailIsValid && this.passwordIsValid && !(this.form.confirm != this.passwordIsValid);
         },
     },
     methods: {
