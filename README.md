@@ -11,7 +11,7 @@ Pour commencer...
     - Rendez-vous sur le site nodejs.org et installez la dernière version stable disponible (LTS).Cela va également installer NPM.
 
 - Si vous ne l'avez pas, installez MySQL
-    - Rendez vous sur https://dev.mysql.com/downloads/installer/ et choisissez la version community, plus complète. Une fois le téléchargement terminé, installez MySQL.
+    - Rendez vous sur https://dev.mysql.com/downloads/installer/ . Une fois le téléchargement terminé, installez MySQL.
     - Ouvrez la console MySQL et créez votre utilisateur ou connectez vous
     - Pour créer un utilisateur root (qui aura tous les droits administrateur) tapez la commande :
         - mysqladmin -u root password "votre mot de passe"
