@@ -15,6 +15,7 @@ Pour commencer...
     - Ouvrez la console MySQL et créez votre utilisateur ou connectez vous
     - Pour créer un utilisateur root (qui aura tous les droits administrateur) tapez la commande :
         - mysqladmin -u root password "votre mot de passe"
+    - Créez la base de données en tapant : CREATE DATABASE groupomania;
 
 - Clonez le projet sur votre machine
 
