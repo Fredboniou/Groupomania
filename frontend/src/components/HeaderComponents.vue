@@ -3,7 +3,8 @@
         <input type="checkbox" id="menu-checkbox" class="menu-checkbox" />
         <label for="menu-checkbox" class="menu-toggle">&equiv; {{ fullname() }}</label>
         <div class="userChoice">
-            <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile" title="modifier mon profil">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
+            <!-- <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link to="/createprofile" title="modifier mon profil">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span> -->
+            <div class="user"><span class="infoToUser">Vous êtes connecté(e) en tant que</span><router-link :to="`/profile/${userId}`" title="modifier mon profil">{{ fullname() }}</router-link></div><span class="separateUserChoice"> | </span>
             <div class="createProfile"><router-Link to="/createProfile">Modifier mon profil</router-Link></div>
             <div class="separateMenu"></div>
             <div class="newPost"><router-link to="/newpost">Créer une publication</router-link></div><span class="separateUserChoice"> | </span>
