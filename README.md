@@ -27,6 +27,7 @@ Pour commencer...
 - Importez la base de données qui se trouve dans le dossier database.sql :
     - Ouvrez cmd, et naviguez dans le dossier ou l'app a été clonée,
     - tapez : mysql -u root -p"votre mot de passe" groupomania < database.sql (veillez à ne pas mettre d'espace entre '-p' et votre mot de passe)
+    - Fermez puis redémarrez la console MySQL et reconnectez vous
 
 
 Démarrer l'application...
