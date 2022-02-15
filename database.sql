@@ -48,30 +48,6 @@ INSERT INTO `comment` VALUES (4,23,7,'un premier commentaire','2021-12-27 18:43:
 UNLOCK TABLES;
 
 --
--- Table structure for table `likes`
---
-
-DROP TABLE IF EXISTS `likes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `likes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userId` int NOT NULL,
-  `postId` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `likes`
---
-
-LOCK TABLES `likes` WRITE;
-/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `post`
 --
 
