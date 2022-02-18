@@ -24,11 +24,11 @@ Pour commencer...
     - DB_PASSWORD=votre mot de passe MySQL
     - DB_TOKEN=créez un token
     - DB_PORT=le port sur lequel tourne votre server
-    - DB_NAME=le nom choisi pour votre base de données
+    - DB_NAME=le-nom-que-vous-avez-choisi
     
 - Importez la base de données qui se trouve dans le dossier database.sql :
     - Ouvrez cmd, et naviguez dans le dossier ou l'app a été clonée,
-    - tapez : mysql -u root -p"votre mot de passe" groupomania < database.sql (veillez à ne pas mettre d'espace entre '-p' et votre mot de passe)
+    - tapez : mysql -u root -p"votre mot de passe" le-nom-que-vous-avez-choisi < database.sql (veillez à ne pas mettre d'espace entre '-p' et votre mot de passe)
     - Fermez puis redémarrez la console MySQL et reconnectez vous
 
 
