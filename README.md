@@ -15,7 +15,7 @@ Pour commencer...
     - Ouvrez la console MySQL et créez votre utilisateur ou connectez vous
     - Pour créer un utilisateur root (qui aura tous les droits administrateur) tapez la commande :
         - mysqladmin -u root password "votre mot de passe"
-    - Créez la base de données en tapant : CREATE DATABASE groupomania;
+    - Créez la base de données en tapant : CREATE DATABASE choisissez-un-nom;
 
 - Clonez le projet sur votre machine
 
@@ -23,6 +23,8 @@ Pour commencer...
     - DB_USER=votre nom d'utilisateur MySQL
     - DB_PASSWORD=votre mot de passe MySQL
     - DB_TOKEN=créez un token
+    - DB_PORT=le port sur lequel tourne votre server
+    - DB_NAME=le nom choisi pour votre base de données
     
 - Importez la base de données qui se trouve dans le dossier database.sql :
     - Ouvrez cmd, et naviguez dans le dossier ou l'app a été clonée,
